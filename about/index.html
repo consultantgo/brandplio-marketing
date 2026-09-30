@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<title>About · Brandplio</title>
+<meta name="description" content="Why Brandplio exists: give every tool, teammate, and AI one shared source of brand truth." />
+<meta property="og:title" content="About Brandplio" />
+<meta property="og:description" content="Why Brandplio exists: give every tool, teammate, and AI one shared source of brand truth." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://brandplio.com/about/" />
+<link rel="canonical" href="https://brandplio.com/about/" />
+
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('bp:theme');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+<link rel="stylesheet" href="../styles/tokens.css" />
+<link rel="stylesheet" href="../styles/base.css" />
+<link rel="stylesheet" href="../styles/components.css" />
+<link rel="stylesheet" href="../styles/page.css" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23C67B2A'/%3E%3Cpath d='M10 9h6.5a4.5 4.5 0 0 1 3.2 7.7A5 5 0 0 1 17 25H10V9zm3 3v4h3.2a2 2 0 1 0 0-4H13zm0 7v3h3.8a1.5 1.5 0 1 0 0-3H13z' fill='%230A0A0C'/%3E%3C/svg%3E" />
+</head>
+
+<body>
+
+<!-- ============================= NAV ============================= -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="../" class="nav__brand" aria-label="Brandplio home">
+      <svg class="nav__brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <style>.bp-m-bg{fill:var(--color-accent)}.bp-m-fg{fill:var(--color-ink-on-accent)}</style>
+        <rect class="bp-m-bg" width="32" height="32" rx="8" />
+        <path class="bp-m-fg" d="M10 9h6.5a4.5 4.5 0 0 1 3.2 7.7A5 5 0 0 1 17 25H10V9zm3 3v4h3.2a2 2 0 1 0 0-4H13zm0 7v3h3.8a1.5 1.5 0 1 0 0-3H13z"/>
+      </svg>
+      Brandplio
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="../product/" class="nav__link">Product</a>
+      <a href="../developers/" class="nav__link">Developers</a>
+      <a href="../#use-cases" class="nav__link">Use cases</a>
+      <a href="../#pricing" class="nav__link">Pricing</a>
+    </nav>
+
+    <div class="nav__actions">
+      <button class="nav__theme" type="button" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a href="https://app.brandplio.com/" class="btn btn--plain" target="_blank" rel="noopener">Sign in / Sign up</a>
+      <a href="../#demo" class="btn btn--primary">Book a demo</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================= HERO ============================= -->
+  <section class="page-hero">
+    <div class="container container-narrow">
+      <span class="eyebrow">About</span>
+      <h1 class="display-lg page-hero__title">One source of brand truth, for the agent era.</h1>
+      <p class="lede" style="margin-top: var(--space-5);">
+        Brandplio learns your brand once, then serves it to every tool, teammate,
+        and AI you use&mdash;so everything you ship sounds like you.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================= STORY ============================= -->
+  <section class="container container-narrow">
+    <div class="prose">
+      <h2>Why we built it</h2>
+      <p>
+        Teams now write with a dozen tools and half a dozen AI models. Each one
+        starts from zero: a fresh prompt, a pasted style guide, a best guess at
+        the brand. The result is copy that drifts&mdash;slightly off-voice here,
+        off-message there&mdash;and no single place that says what &ldquo;on-brand&rdquo;
+        actually means.
+      </p>
+      <p>
+        Brandplio fixes that at the source. We analyze your website to extract a
+        structured picture of your brand&mdash;voice, audiences, products, claims,
+        and guardrails&mdash;and turn it into context any system can read. Define
+        it once; serve it everywhere, over a REST API or an MCP server.
+      </p>
+
+      <h2>What we believe</h2>
+    </div>
+
+    <div class="values">
+      <div class="value-card">
+        <div class="value-card__title">Brand is infrastructure</div>
+        <p class="value-card__body">
+          If every tool and agent has to be re-taught your brand by hand, it
+          isn&rsquo;t really defined. It should be a service everything can call.
+        </p>
+      </div>
+      <div class="value-card">
+        <div class="value-card__title">Honest by default</div>
+        <p class="value-card__body">
+          We&rsquo;d rather show the product than overstate it. What we say we do,
+          we do&mdash;and we say plainly what we don&rsquo;t.
+        </p>
+      </div>
+      <div class="value-card">
+        <div class="value-card__title">Built for review</div>
+        <p class="value-card__body">
+          On-brand output should be inspectable. Every result can show the
+          context it used, so a human can check the work.
+        </p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h2>Where we are</h2>
+      <p>
+        Brandplio is early. We&rsquo;re working closely with the first teams using
+        it and shaping the product around real workflows. If the problem sounds
+        like yours, we&rsquo;d love to talk&mdash;<a href="../#demo">book a demo</a>
+        or <a href="https://app.brandplio.com/" target="_blank" rel="noopener">try the app</a>.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================= FOOTER ============================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__brand-name">Brandplio</div>
+        <p class="footer__tag">Brand voice for the agent era. Extract it once, serve it everywhere.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="../product/">Overview</a></li>
+          <li><a href="../#capabilities">Capabilities</a></li>
+          <li><a href="../#pricing">Pricing</a></li>
+          <li><a href="#">Changelog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Developers</h4>
+        <ul>
+          <li><a href="../developers/">API</a></li>
+          <li><a href="../developers/#mcp">MCP server</a></li>
+          <li><a href="#">Status</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about/">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="../privacy/">Privacy</a></li>
+          <li><a href="../terms/">Terms</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div>&copy; <span id="year">2026</span> Brandplio, Inc.</div>
+      <div>Crafted with care in vanilla HTML, CSS, and JavaScript.</div>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../scripts/main.js"></script>
+
+</body>
+</html>
