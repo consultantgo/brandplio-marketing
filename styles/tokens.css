@@ -1,0 +1,211 @@
+/* Brandplio — Design Tokens
+ * All system-level values live here as CSS custom properties.
+ * Dark theme overrides at the bottom; toggle via [data-theme] on <html>.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ——— Color: foundation ——— */
+  --color-bg:              #F7F5F1;
+  --color-bg-elevated:     #FFFFFF;
+  --color-surface:         #FBF9F5;
+  --color-surface-sunken:  #EFEBE3;
+
+  /* ——— Color: ink ——— */
+  --color-ink:             #0A0A0C;
+  --color-ink-strong:      #000000;
+  --color-ink-muted:       #55575C;
+  --color-ink-subtle:      #8A8D93;
+  --color-ink-on-accent:   #FFFFFF;
+
+  /* ——— Color: borders & dividers ——— */
+  --color-border:          #E6E1D7;
+  --color-border-strong:   #D4CEC0;
+  --color-border-subtle:   #EFEBE3;
+
+  /* ——— Color: accent (warm ochre) ——— */
+  --color-accent:          #C67B2A;
+  --color-accent-hover:    #AA6921;
+  --color-accent-active:   #8F5818;
+  --color-accent-soft:     #F0E0C8;
+  --color-accent-fade:     rgba(198, 123, 42, 0.12);
+
+  /* ——— Color: semantic ——— */
+  --color-signal-warn:     #B8791A;
+  --color-signal-risk:     #A83E2B;
+  --color-signal-ok:       #3F7A4A;
+
+  /* ——— Color: code block ——— */
+  --code-bg:               #0E0E10;
+  --code-ink:              #E8E6E1;
+  --code-ink-muted:        #8A8D93;
+  --code-comment:          #6B6F76;
+  --code-keyword:          #E39A4C;
+  --code-string:           #C8B48A;
+  --code-fn:               #9FB8D4;
+  --code-number:           #D38B7A;
+
+  /* ——— Typography ——— */
+  --font-display: 'Inter Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', 'Menlo', monospace;
+
+  --text-3xs:  0.6875rem;  /* 11 */
+  --text-2xs:  0.75rem;    /* 12 */
+  --text-xs:   0.8125rem;  /* 13 */
+  --text-sm:   0.875rem;   /* 14 */
+  --text-base: 1rem;       /* 16 */
+  --text-md:   1.0625rem;  /* 17 */
+  --text-lg:   1.1875rem;  /* 19 */
+  --text-xl:   1.375rem;   /* 22 */
+  --text-2xl:  1.625rem;   /* 26 */
+  --text-3xl:  2rem;       /* 32 */
+  --text-4xl:  2.5rem;     /* 40 */
+  --text-5xl:  3.25rem;    /* 52 */
+  --text-6xl:  4.25rem;    /* 68 */
+  --text-7xl:  5.5rem;     /* 88 */
+  --text-8xl:  7rem;       /* 112 — hero on wide screens */
+
+  --leading-tight:  1.05;
+  --leading-snug:   1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  --tracking-tight:  -0.03em;
+  --tracking-snug:   -0.018em;
+  --tracking-normal: -0.006em;
+  --tracking-wide:    0.04em;
+  --tracking-caps:    0.12em;
+
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semi:    600;
+  --weight-bold:    700;
+
+  /* ——— Spacing (4px base) ——— */
+  --space-0:   0;
+  --space-1:   0.25rem;
+  --space-2:   0.5rem;
+  --space-3:   0.75rem;
+  --space-4:   1rem;
+  --space-5:   1.25rem;
+  --space-6:   1.5rem;
+  --space-8:   2rem;
+  --space-10:  2.5rem;
+  --space-12:  3rem;
+  --space-16:  4rem;
+  --space-20:  5rem;
+  --space-24:  6rem;
+  --space-32:  8rem;
+  --space-40: 10rem;
+  --space-48: 12rem;
+
+  /* ——— Layout ——— */
+  --max-content:  1200px;
+  --max-narrow:   880px;
+  --max-prose:    68ch;
+  --gutter:       clamp(1.25rem, 4vw, 2.5rem);
+  --section-y:    clamp(4rem, 10vw, 8rem);
+  --section-y-lg: clamp(6rem, 14vw, 12rem);
+
+  /* ——— Radii ——— */
+  --radius-xs:   3px;
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-2xl:  28px;
+  --radius-full: 999px;
+
+  /* ——— Elevation ——— */
+  --shadow-xs: 0 1px 2px rgba(10, 10, 12, 0.04);
+  --shadow-sm: 0 2px 6px rgba(10, 10, 12, 0.05), 0 1px 2px rgba(10, 10, 12, 0.04);
+  --shadow-md: 0 6px 16px rgba(10, 10, 12, 0.06), 0 2px 4px rgba(10, 10, 12, 0.04);
+  --shadow-lg: 0 16px 40px rgba(10, 10, 12, 0.08), 0 4px 8px rgba(10, 10, 12, 0.04);
+  --shadow-xl: 0 32px 64px rgba(10, 10, 12, 0.12);
+  --ring-focus: 0 0 0 3px var(--color-accent-fade);
+
+  /* ——— Motion ——— */
+  --ease-out:      cubic-bezier(0.2, 0, 0, 1);
+  --ease-out-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out:   cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-instant:   80ms;
+  --dur-fast:      150ms;
+  --dur-base:      240ms;
+  --dur-slow:      480ms;
+  --dur-slower:    800ms;
+
+  /* ——— Z-index ——— */
+  --z-nav:    100;
+  --z-dialog: 200;
+  --z-toast:  300;
+}
+
+/* ——— Dark theme ——— */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg:              #0A0A0C;
+  --color-bg-elevated:     #111115;
+  --color-surface:         #141418;
+  --color-surface-sunken:  #070708;
+
+  --color-ink:             #F2EFE9;
+  --color-ink-strong:      #FFFFFF;
+  --color-ink-muted:       #A8A8AD;
+  --color-ink-subtle:      #6C6E74;
+  --color-ink-on-accent:   #0A0A0C;
+
+  --color-border:          #24242A;
+  --color-border-strong:   #35353B;
+  --color-border-subtle:   #1A1A1F;
+
+  --color-accent:          #E39A4C;
+  --color-accent-hover:    #EDB068;
+  --color-accent-active:   #F4C487;
+  --color-accent-soft:     #2C2013;
+  --color-accent-fade:     rgba(227, 154, 76, 0.16);
+
+  --code-bg:               #0E0E10;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.45), 0 2px 4px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.35);
+  --shadow-xl: 0 32px 64px rgba(0, 0, 0, 0.6);
+}
+
+/* Auto-dark if system prefers AND user hasn't chosen */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --color-bg:              #0A0A0C;
+    --color-bg-elevated:     #111115;
+    --color-surface:         #141418;
+    --color-surface-sunken:  #070708;
+
+    --color-ink:             #F2EFE9;
+    --color-ink-strong:      #FFFFFF;
+    --color-ink-muted:       #A8A8AD;
+    --color-ink-subtle:      #6C6E74;
+    --color-ink-on-accent:   #0A0A0C;
+
+    --color-border:          #24242A;
+    --color-border-strong:   #35353B;
+    --color-border-subtle:   #1A1A1F;
+
+    --color-accent:          #E39A4C;
+    --color-accent-hover:    #EDB068;
+    --color-accent-active:   #F4C487;
+    --color-accent-soft:     #2C2013;
+    --color-accent-fade:     rgba(227, 154, 76, 0.16);
+
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.45), 0 2px 4px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.35);
+    --shadow-xl: 0 32px 64px rgba(0, 0, 0, 0.6);
+  }
+}

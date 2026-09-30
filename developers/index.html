@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark light" />
+<title>Developers · Brandplio</title>
+<meta name="description" content="Serve brand to every agent. REST API, MCP server, enterprise-scoped keys. Built for the agent era." />
+<link rel="canonical" href="https://brandplio.com/developers/" />
+
+<!-- Theme bootstrap: this page defaults to dark unless the user has set a preference -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('bp:theme');
+      if (t === 'dark' || t === 'light') {
+        document.documentElement.setAttribute('data-theme', t);
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+<link rel="stylesheet" href="../styles/tokens.css" />
+<link rel="stylesheet" href="../styles/base.css" />
+<link rel="stylesheet" href="../styles/components.css" />
+<link rel="stylesheet" href="../styles/developers.css" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23C67B2A'/%3E%3Cpath d='M10 9h6.5a4.5 4.5 0 0 1 3.2 7.7A5 5 0 0 1 17 25H10V9zm3 3v4h3.2a2 2 0 1 0 0-4H13zm0 7v3h3.8a1.5 1.5 0 1 0 0-3H13z' fill='%230A0A0C'/%3E%3C/svg%3E" />
+</head>
+
+<body>
+
+<!-- ============================= NAV ============================= -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="../" class="nav__brand" aria-label="Brandplio home">
+      <svg class="nav__brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <style>.bp-m-bg{fill:var(--color-accent)}.bp-m-fg{fill:var(--color-ink-on-accent)}</style>
+        <rect class="bp-m-bg" width="32" height="32" rx="8" />
+        <path class="bp-m-fg" d="M10 9h6.5a4.5 4.5 0 0 1 3.2 7.7A5 5 0 0 1 17 25H10V9zm3 3v4h3.2a2 2 0 1 0 0-4H13zm0 7v3h3.8a1.5 1.5 0 1 0 0-3H13z"/>
+      </svg>
+      Brandplio
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="../product/" class="nav__link">Product</a>
+      <a href="./" class="nav__link" aria-current="page" style="color: var(--color-ink);">Developers</a>
+      <a href="../#use-cases" class="nav__link">Use cases</a>
+      <a href="../#pricing" class="nav__link">Pricing</a>
+      <a href="#" class="nav__link">Docs</a>
+    </nav>
+
+    <div class="nav__actions">
+      <button class="nav__theme" type="button" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a href="#" class="btn btn--plain">Sign in</a>
+      <a href="#sandbox" class="btn btn--primary">Get API sandbox</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================= HERO ============================= -->
+  <section class="dev-hero">
+    <div class="container dev-hero__grid">
+
+      <div class="dev-hero__copy">
+        <span class="eyebrow">Developers</span>
+        <h1>Brand, as an <em>API call</em>.</h1>
+        <p class="dev-hero__sub">
+          Three ways to deliver brand: a public REST API for custom code, a
+          Model Context Protocol server for agents, and a drop-in skill that
+          content creators load into Claude, ChatGPT, or Slack.
+        </p>
+
+        <div class="dev-hero__actions">
+          <a href="#quickstart" class="btn btn--primary btn--lg">Read the quickstart</a>
+          <a href="#reference"  class="btn btn--ghost btn--lg">Browse the API</a>
+        </div>
+
+        <div class="dev-hero__meta">
+          <span>REST &amp; MCP</span>
+          <span>OpenAPI 3.1</span>
+          <span>TypeScript &amp; Python</span>
+        </div>
+      </div>
+
+      <!-- Code tabs -->
+      <div class="codeblock codeblock--xl" data-codetabs>
+        <div class="codeblock__head">
+          <div class="codeblock__tabs" role="tablist">
+            <button class="codeblock__tab" role="tab" aria-selected="true"  data-tab="curl">cURL</button>
+            <button class="codeblock__tab" role="tab" aria-selected="false" data-tab="ts">TypeScript</button>
+            <button class="codeblock__tab" role="tab" aria-selected="false" data-tab="py">Python</button>
+          </div>
+          <button class="codeblock__copy" type="button" data-copy>Copy</button>
+        </div>
+
+        <div class="codeblock__panes">
+<pre class="codeblock__pane" data-pane="curl" data-active="true"><span class="tok-comment"># Fetch channel-aware brand context for a combination</span>
+<span class="tok-kw">curl</span> <span class="tok-str">"https://api.brandplio.com/api/acme/context?\
+persona=ops-director&amp;product=platform&amp;tone=reassuring&amp;channel=email"</span> \
+  -H <span class="tok-str">"Authorization: Bearer $BRANDPLIO_API_KEY"</span> \
+  -H <span class="tok-str">"X-Brand-Id: prod"</span>
+
+<span class="tok-comment"># ─► 200 OK</span>
+<span class="tok-dim">{</span>
+  <span class="tok-str">"prompt"</span>: <span class="tok-str">"You are writing as the Brandplio voice for Ops Directors…"</span>,
+  <span class="tok-str">"tensions"</span>: <span class="tok-dim">[]</span>,
+  <span class="tok-str">"version"</span>: <span class="tok-str">"rev_2024_11_14.07"</span>
+<span class="tok-dim">}</span></pre>
+
+<pre class="codeblock__pane" data-pane="ts"><span class="tok-comment">// npm i @brandplio/sdk</span>
+<span class="tok-kw">import</span> { Brandplio } <span class="tok-kw">from</span> <span class="tok-str">"@brandplio/sdk"</span>;
+
+<span class="tok-kw">const</span> bp = <span class="tok-kw">new</span> <span class="tok-fn">Brandplio</span>({
+  apiKey: process.env.<span class="tok-dim">BRANDPLIO_API_KEY</span>!,
+  enterprise: <span class="tok-str">"acme"</span>,
+  brand: <span class="tok-str">"prod"</span>,
+});
+
+<span class="tok-kw">const</span> { prompt, tensions } = <span class="tok-kw">await</span> bp.<span class="tok-fn">context</span>({
+  persona: <span class="tok-str">"ops-director"</span>,
+  product: <span class="tok-str">"platform"</span>,
+  tone:    <span class="tok-str">"reassuring"</span>,
+  channel: <span class="tok-str">"email"</span>,
+});
+
+<span class="tok-kw">if</span> (tensions.length) reviewQueue.<span class="tok-fn">flag</span>(tensions);</pre>
+
+<pre class="codeblock__pane" data-pane="py"><span class="tok-comment"># pip install brandplio</span>
+<span class="tok-kw">from</span> brandplio <span class="tok-kw">import</span> Brandplio
+
+bp = <span class="tok-fn">Brandplio</span>(
+    api_key=os.environ[<span class="tok-str">"BRANDPLIO_API_KEY"</span>],
+    enterprise=<span class="tok-str">"acme"</span>,
+    brand=<span class="tok-str">"prod"</span>,
+)
+
+ctx = bp.<span class="tok-fn">context</span>(
+    persona=<span class="tok-str">"ops-director"</span>,
+    product=<span class="tok-str">"platform"</span>,
+    tone=<span class="tok-str">"reassuring"</span>,
+    channel=<span class="tok-str">"email"</span>,
+)
+
+<span class="tok-kw">if</span> ctx.tensions:
+    review_queue.<span class="tok-fn">flag</span>(ctx.tensions)</pre>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================= QUICKSTART ============================= -->
+  <section class="quickstart" id="quickstart">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Quickstart</span>
+        <h2 class="display-md">Three steps, under five minutes.</h2>
+      </div>
+
+      <div class="quickstart__grid">
+
+        <article class="step">
+          <div class="step__num">01</div>
+          <h3 class="step__name">Mint an API key</h3>
+          <p class="step__desc">Keys are enterprise-scoped, prefixed <code>bvp_</code>, and rotate with one click. Create unlimited keys with per-brand scoping.</p>
+<pre class="step__snippet"><span class="tok-dim">$</span> bvp keys create \
+    --name prod \
+    --scope brand:default</pre>
+        </article>
+
+        <article class="step">
+          <div class="step__num">02</div>
+          <h3 class="step__name">Fetch context</h3>
+          <p class="step__desc">Ask for a persona &times; product &times; tone bundle, optionally shaped for a channel. You get a ready-to-use prompt block back.</p>
+<pre class="step__snippet"><span class="tok-kw">GET</span> /api/acme/context
+     ?persona=ops-director
+     &amp;product=platform
+     &amp;tone=reassuring</pre>
+        </article>
+
+        <article class="step">
+          <div class="step__num">03</div>
+          <h3 class="step__name">Ship it</h3>
+          <p class="step__desc">Drop the prompt block into your system prompt, or wire the MCP server to Claude Desktop and let agents consume brand natively.</p>
+<pre class="step__snippet"><span class="tok-dim">$</span> claude mcp add brandplio \
+    npx @brandplio/mcp \
+    --env BRANDPLIO_API_KEY=$KEY</pre>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= API REFERENCE ============================= -->
+  <section class="endpoints" id="reference">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Reference</span>
+        <h2 class="display-md">The public API, at a glance.</h2>
+        <p class="lede">Four endpoints, one auth header, predictable JSON. Full OpenAPI spec available as a download.</p>
+      </div>
+
+      <div class="endpoints__grid" data-endpoints>
+
+        <div class="endpoint-list" role="tablist" aria-label="API endpoints">
+          <button class="endpoint" role="tab" aria-selected="true"  data-method="GET"  data-endpoint="context">
+            <span class="endpoint__method">GET</span>
+            <span class="endpoint__path">/api/:enterprise/context</span>
+          </button>
+          <button class="endpoint" role="tab" aria-selected="false" data-method="GET"  data-endpoint="combinations">
+            <span class="endpoint__method">GET</span>
+            <span class="endpoint__path">/api/:enterprise/combinations</span>
+          </button>
+          <button class="endpoint" role="tab" aria-selected="false" data-method="GET"  data-endpoint="prompts-id">
+            <span class="endpoint__method">GET</span>
+            <span class="endpoint__path">/api/:enterprise/prompts/:id</span>
+          </button>
+          <button class="endpoint" role="tab" aria-selected="false" data-method="GET"  data-endpoint="prompts">
+            <span class="endpoint__method">GET</span>
+            <span class="endpoint__path">/api/:enterprise/prompts</span>
+          </button>
+        </div>
+
+        <div class="endpoint-details">
+
+          <div class="endpoint__detail" data-detail="context" data-active="true">
+            <div class="endpoint__headline">
+              <span class="endpoint__method">GET</span>
+              <code>/api/:enterprise/context</code>
+            </div>
+            <p class="endpoint__summary">
+              Assemble a brand-aligned prompt block for a persona, product, and tone.
+              Optionally shape it for a channel (email, web, linkedin, x, instagram).
+            </p>
+            <dl class="endpoint__meta">
+              <dt>Auth</dt><dd>Bearer bvp_&hellip;</dd>
+              <dt>Brand</dt><dd>X-Brand-Id header or ?brand= query</dd>
+              <dt>Rate</dt><dd>100 req/min default, higher on request</dd>
+            </dl>
+            <div class="endpoint__io">
+              <div>
+                <div class="endpoint__io-label">Request</div>
+                <div class="codeblock">
+                  <div class="codeblock__head">
+                    <div class="codeblock__tabs"><span class="codeblock__tab" aria-selected="true">cURL</span></div>
+                  </div>
+<pre class="codeblock__pane" data-active="true"><span class="tok-kw">curl</span> <span class="tok-str">"…/api/acme/context?\
+persona=ops-director&amp;product=platform&amp;\
+tone=reassuring&amp;channel=email"</span> \
+  -H <span class="tok-str">"Authorization: Bearer $KEY"</span> \
+  -H <span class="tok-str">"X-Brand-Id: prod"</span></pre>
+                </div>
+              </div>
+              <div>
+                <div class="endpoint__io-label">Response · 200</div>
+                <div class="codeblock">
+                  <div class="codeblock__head">
+                    <div class="codeblock__tabs"><span class="codeblock__tab" aria-selected="true">JSON</span></div>
+                  </div>
+<pre class="codeblock__pane" data-active="true"><span class="tok-dim">{</span>
+  <span class="tok-str">"prompt"</span>: <span class="tok-str">"You are writing as Brandplio…"</span>,
+  <span class="tok-str">"tensions"</span>: <span class="tok-dim">[</span>
+    <span class="tok-dim">{</span>
+      <span class="tok-str">"kind"</span>: <span class="tok-str">"tone_persona_conflict"</span>,
+      <span class="tok-str">"severity"</span>: <span class="tok-str">"warn"</span>
+    <span class="tok-dim">}</span>
+  <span class="tok-dim">]</span>,
+  <span class="tok-str">"version"</span>: <span class="tok-str">"rev_2024_11_14.07"</span>
+<span class="tok-dim">}</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="endpoint__detail" data-detail="combinations">
+            <div class="endpoint__headline">
+              <span class="endpoint__method">GET</span>
+              <code>/api/:enterprise/combinations</code>
+            </div>
+            <p class="endpoint__summary">
+              List all pre-built persona &times; product &times; tone combinations for a brand.
+              Useful for agent catalogs and LLM tool discovery.
+            </p>
+            <dl class="endpoint__meta">
+              <dt>Auth</dt><dd>Bearer bvp_&hellip;</dd>
+              <dt>Returns</dt><dd>Array of combinations with slug, label, and channel support</dd>
+            </dl>
+            <div class="endpoint__io">
+              <div>
+                <div class="endpoint__io-label">Request</div>
+                <div class="codeblock">
+                  <div class="codeblock__head">
+                    <div class="codeblock__tabs"><span class="codeblock__tab" aria-selected="true">cURL</span></div>
+                  </div>
+<pre class="codeblock__pane" data-active="true"><span class="tok-kw">curl</span> <span class="tok-str">"…/api/acme/combinations"</span> \
+  -H <span class="tok-str">"Authorization: Bearer $KEY"</span></pre>
+                </div>
+              </div>
+              <div>
+                <div class="endpoint__io-label">Response · 200</div>
+                <div class="codeblock">
+                  <div class="codeblock__head">
+                    <div class="codeblock__tabs"><span class="codeblock__tab" aria-selected="true">JSON</span></div>
+                  </div>
+<pre class="codeblock__pane" data-active="true"><span class="tok-dim">[</span>
+  <span class="tok-dim">{</span>
+    <span class="tok-str">"id"</span>: <span class="tok-str">"cmb_9jV1…"</span>,
+    <span class="tok-str">"slug"</span>: <span class="tok-str">"ops-director-platform-reassuring"</span>,
+    <span class="tok-str">"label"</span>: <span class="tok-str">"Ops Director · Platform · Reassuring"</span>,
+    <span class="tok-str">"channels"</span>: <span class="tok-dim">[</span><span class="tok-str">"email"</span>, <span class="tok-str">"linkedin"</span>, <span class="tok-str">"web_copy"</span><span class="tok-dim">]</span>
+  <span class="tok-dim">}</span>
+<span class="tok-dim">]</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="endpoint__detail" data-detail="prompts-id">
+            <div class="endpoint__headline">
+              <span class="endpoint__method">GET</span>
+              <code>/api/:enterprise/prompts/:combination_id</code>
+            </div>
+            <p class="endpoint__summary">
+              Fetch the stored, pre-assembled prompt for a specific combination.
+              Channel-aware via <code>?channel=</code>, returns plain text or JSON.
+            </p>
+            <dl class="endpoint__meta">
+              <dt>Auth</dt><dd>Bearer bvp_&hellip;</dd>
+              <dt>Query</dt><dd>channel (optional), format=text|json</dd>
+              <dt>Cache</dt><dd>Returned with ETag · typically sub-10ms at the edge</dd>
+            </dl>
+            <div class="endpoint__io">
+              <div>
+                <div class="endpoint__io-label">Request</div>
+                <div class="codeblock">
+                  <div class="codeblock__head">
+                    <div class="codeblock__tabs"><span class="codeblock__tab" aria-selected="true">cURL</span></div>
+                  </div>
+<pre class="codeblock__pane" data-active="true"><span class="tok-kw">curl</span> <span class="tok-str">"…/api/acme/prompts/cmb_9jV1?channel=email"</span> \
+  -H <span class="tok-str">"Authorization: Bearer $KEY"</span> \
+  -H <span class="tok-str">"Accept: text/plain"</span></pre>
+                </div>
+              </div>
+              <div>
+                <div class="endpoint__io-label">Response · 200 (text/plain)</div>
+                <div class="codeblock">
+                  <div class="codeblock__head">
+                    <div class="codeblock__tabs"><span class="codeblock__tab" aria-selected="true">TEXT</span></div>
+                  </div>
+<pre class="codeblock__pane" data-active="true"><span class="tok-dim">You are writing as Brandplio, the brand voice platform.
+Audience: Operations Directors managing multiple brands.
+Tone: Reassuring. Acknowledge risk, lead with control.
+Channel: Email. Subject under 60 chars, one clear ask…</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="endpoint__detail" data-detail="prompts">
+            <div class="endpoint__headline">
+              <span class="endpoint__method">GET</span>
+              <code>/api/:enterprise/prompts</code>
+            </div>
+            <p class="endpoint__summary">
+              Enumerate every stored prompt across the brand, with metadata for
+              combination, channel, version, and last-updated timestamp. Useful
+              for syncing a read-through cache in your own infrastructure.
+            </p>
+            <dl class="endpoint__meta">
+              <dt>Auth</dt><dd>Bearer bvp_&hellip;</dd>
+              <dt>Returns</dt><dd>Paginated array, Link header for next page</dd>
+            </dl>
+            <div class="endpoint__io">
+              <div>
+                <div class="endpoint__io-label">Request</div>
+                <div class="codeblock">
+                  <div class="codeblock__head">
+                    <div class="codeblock__tabs"><span class="codeblock__tab" aria-selected="true">cURL</span></div>
+                  </div>
+<pre class="codeblock__pane" data-active="true"><span class="tok-kw">curl</span> <span class="tok-str">"…/api/acme/prompts?limit=50"</span> \
+  -H <span class="tok-str">"Authorization: Bearer $KEY"</span></pre>
+                </div>
+              </div>
+              <div>
+                <div class="endpoint__io-label">Response · 200</div>
+                <div class="codeblock">
+                  <div class="codeblock__head">
+                    <div class="codeblock__tabs"><span class="codeblock__tab" aria-selected="true">JSON</span></div>
+                  </div>
+<pre class="codeblock__pane" data-active="true"><span class="tok-dim">{</span>
+  <span class="tok-str">"data"</span>: <span class="tok-dim">[</span>
+    <span class="tok-dim">{</span>
+      <span class="tok-str">"combination_id"</span>: <span class="tok-str">"cmb_9jV1"</span>,
+      <span class="tok-str">"channel"</span>: <span class="tok-str">"email"</span>,
+      <span class="tok-str">"version"</span>: <span class="tok-str">"rev_2024_11_14.07"</span>,
+      <span class="tok-str">"updated_at"</span>: <span class="tok-str">"2024-11-14T10:18:22Z"</span>
+    <span class="tok-dim">}</span>
+  <span class="tok-dim">]</span>,
+  <span class="tok-str">"next"</span>: <span class="tok-str">"/api/acme/prompts?cursor=…"</span>
+<span class="tok-dim">}</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= MCP ============================= -->
+  <section class="mcp">
+    <div class="container mcp__grid">
+
+      <div>
+        <span class="eyebrow">Model Context Protocol</span>
+        <h2 class="display-md" style="margin-top: var(--space-4); margin-bottom: var(--space-5);">
+          Native MCP. Zero integration code.
+        </h2>
+        <p class="lede" style="margin-bottom: var(--space-6);">
+          Point any MCP-compatible client at Brandplio and your brand becomes a
+          first-class tool. Agents can list combinations, resolve catalog items,
+          and pull context without a single line of glue code.
+        </p>
+
+        <ul class="dev-feat" style="margin-bottom: var(--space-6);">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Exposes <b>load_catalog</b>, <b>build_context</b>, and <b>get_combination_prompt</b> as tools.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Scopes per API key: same server, different brand, no restart.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Ships with <code>stdio</code> and <code>http</code> transports.</span>
+          </li>
+        </ul>
+
+        <div class="mcp__clients">
+          <div class="client">
+            <div class="client__mark">C</div>
+            <div><strong>Claude Desktop</strong><small>stdio</small></div>
+          </div>
+          <div class="client">
+            <div class="client__mark">C</div>
+            <div><strong>Cursor</strong><small>stdio</small></div>
+          </div>
+          <div class="client">
+            <div class="client__mark">Z</div>
+            <div><strong>Zed</strong><small>stdio</small></div>
+          </div>
+          <div class="client">
+            <div class="client__mark">G</div>
+            <div><strong>GPT Desktop</strong><small>http</small></div>
+          </div>
+          <div class="client">
+            <div class="client__mark">W</div>
+            <div><strong>Warp Agent</strong><small>stdio</small></div>
+          </div>
+          <div class="client">
+            <div class="client__mark">&middot;</div>
+            <div><strong>Custom clients</strong><small>Any MCP host</small></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="codeblock" data-codetabs>
+        <div class="codeblock__head">
+          <div class="codeblock__tabs" role="tablist">
+            <button class="codeblock__tab" role="tab" aria-selected="true"  data-tab="claude">Claude Desktop</button>
+            <button class="codeblock__tab" role="tab" aria-selected="false" data-tab="cursor">Cursor</button>
+          </div>
+          <button class="codeblock__copy" type="button" data-copy>Copy</button>
+        </div>
+        <div class="codeblock__panes">
+<pre class="codeblock__pane" data-pane="claude" data-active="true"><span class="tok-comment">// ~/Library/Application Support/Claude/claude_desktop_config.json</span>
+<span class="tok-dim">{</span>
+  <span class="tok-str">"mcpServers"</span>: <span class="tok-dim">{</span>
+    <span class="tok-str">"brandplio"</span>: <span class="tok-dim">{</span>
+      <span class="tok-str">"command"</span>: <span class="tok-str">"npx"</span>,
+      <span class="tok-str">"args"</span>: <span class="tok-dim">[</span><span class="tok-str">"-y"</span>, <span class="tok-str">"@brandplio/mcp"</span><span class="tok-dim">]</span>,
+      <span class="tok-str">"env"</span>: <span class="tok-dim">{</span>
+        <span class="tok-str">"BRANDPLIO_API_KEY"</span>: <span class="tok-str">"bvp_live_7f2a…"</span>,
+        <span class="tok-str">"BRANDPLIO_ENTERPRISE"</span>: <span class="tok-str">"acme"</span>,
+        <span class="tok-str">"BRANDPLIO_BRAND"</span>: <span class="tok-str">"prod"</span>
+      <span class="tok-dim">}</span>
+    <span class="tok-dim">}</span>
+  <span class="tok-dim">}</span>
+<span class="tok-dim">}</span></pre>
+<pre class="codeblock__pane" data-pane="cursor"><span class="tok-comment">// ~/.cursor/mcp.json</span>
+<span class="tok-dim">{</span>
+  <span class="tok-str">"mcpServers"</span>: <span class="tok-dim">{</span>
+    <span class="tok-str">"brandplio"</span>: <span class="tok-dim">{</span>
+      <span class="tok-str">"command"</span>: <span class="tok-str">"npx"</span>,
+      <span class="tok-str">"args"</span>: <span class="tok-dim">[</span><span class="tok-str">"-y"</span>, <span class="tok-str">"@brandplio/mcp"</span><span class="tok-dim">]</span>,
+      <span class="tok-str">"env"</span>: <span class="tok-dim">{</span>
+        <span class="tok-str">"BRANDPLIO_API_KEY"</span>: <span class="tok-str">"bvp_live_7f2a…"</span>
+      <span class="tok-dim">}</span>
+    <span class="tok-dim">}</span>
+  <span class="tok-dim">}</span>
+<span class="tok-dim">}</span></pre>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================= SKILLS ============================= -->
+  <section class="skills" id="skills">
+    <div class="container skills__grid">
+
+      <div>
+        <span class="eyebrow">Drop-in skill</span>
+        <h2 class="display-md" style="margin-top: var(--space-4); margin-bottom: var(--space-5);">
+          Brand for content creators, with zero code.
+        </h2>
+        <p class="lede" style="margin-bottom: var(--space-6);">
+          Ship a pre-built skill that content creators paste into Claude, ChatGPT,
+          or Slack. The skill asks the right questions, pulls context through the
+          MCP server or REST API, and returns on-brand output with a short
+          summary of the decisions it made.
+        </p>
+
+        <ul class="dev-feat">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Conversational resolution.</b> No IDs, no slugs: creators describe intent, the skill translates.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Lock a layer.</b> Pin persona, product, tone, or channel for team-specific skills (e.g. &ldquo;support replies only&rdquo;).</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Transparent decisions.</b> Every output ships with a &ldquo;Context Applied&rdquo; block, so reviewers see what the skill used.</span>
+          </li>
+        </ul>
+
+        <div class="skills__hosts">
+          <div class="client">
+            <div class="client__mark">C</div>
+            <div><strong>Claude Projects</strong><small>Paste into instructions</small></div>
+          </div>
+          <div class="client">
+            <div class="client__mark">G</div>
+            <div><strong>ChatGPT GPTs</strong><small>Instructions + Actions</small></div>
+          </div>
+          <div class="client">
+            <div class="client__mark">CC</div>
+            <div><strong>Claude Code Skills</strong><small>Save as .md in skills/</small></div>
+          </div>
+          <div class="client">
+            <div class="client__mark">S</div>
+            <div><strong>Slack / Teams</strong><small>Bot system prompt</small></div>
+          </div>
+        </div>
+
+        <div class="skill-template">
+          <div class="skill-template__icon">B</div>
+          <div>
+            <div class="skill-template__name">brandplio.skill.md</div>
+            <div class="skill-template__meta">system prompt + tool definitions &middot; 4.2 KB</div>
+          </div>
+          <a href="#" class="skill-template__cta">Copy template →</a>
+        </div>
+      </div>
+
+      <!-- Transcript mockup -->
+      <div class="transcript" role="figure" aria-label="Sample conversation with the Brandplio skill">
+        <div class="transcript__head">
+          <div class="client__mark">B</div>
+          <div class="transcript__head-text">
+            <strong>Brandplio skill</strong>
+            <small>Claude Projects · Acme brand workspace</small>
+          </div>
+          <div class="transcript__head-status">live</div>
+        </div>
+
+        <div class="transcript__body">
+
+          <div class="msg msg--user">
+            Help me write a thank-you email for our freelancer customers at year end.
+          </div>
+
+          <div class="msg msg--agent">
+            Happy to. One quick thing to get this on-brand: should this go to
+            the <b>freelancer tier</b> specifically, or our general customer base?
+          </div>
+
+          <div class="msg msg--user">
+            Freelancer tier. Keep it warm but professional.
+          </div>
+
+          <div class="msg msg--agent">
+            <span class="msg__tool-call">build_context · freelancers × platform × warm</span>
+
+            <div class="msg__summary">
+              <strong>Context Applied</strong>
+              <dl>
+                <dt>Persona</dt><dd>Freelancers</dd>
+                <dt>Product</dt><dd>Platform</dd>
+                <dt>Tone</dt><dd>Warm &middot; professional</dd>
+                <dt>Channel</dt><dd>Email</dd>
+              </dl>
+            </div>
+
+            <div class="msg__insight">
+              <b>Insight.</b> Your vocabulary flags &ldquo;users&rdquo;. Swapping to
+              &ldquo;members&rdquo; to match the brand voice.
+            </div>
+
+            <div class="msg__output">Subject: Thanks for building with us this year
+
+Hi there,
+
+It&rsquo;s been a year of watching members like you do extraordinary
+work, and we&rsquo;re grateful you chose to build it here.
+
+A few notes from our side as the year winds down&hellip;</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================= AUTH ============================= -->
+  <section class="auth">
+    <div class="container auth__grid">
+
+      <div>
+        <span class="eyebrow">Authentication</span>
+        <h2 class="display-md" style="margin-top: var(--space-4); margin-bottom: var(--space-5);">
+          Keys built for how teams actually work.
+        </h2>
+        <p class="lede" style="margin-bottom: var(--space-6);">
+          Keys belong to your account, not a single user. Scope them per brand,
+          rotate them in place, and revoke with immediate effect across every
+          agent that was using them.
+        </p>
+
+        <ul class="dev-feat">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>SHA-256 hashed at rest.</b> We never store plaintext keys: you see a key once, at mint.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Brand resolution.</b> Pass <code>X-Brand-Id</code> or <code>?brand=</code>, otherwise falls back to your default brand.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Rate-limited per key.</b> Higher ceilings and burst allowances available on request.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Key activity logged.</b> Every key mint, rotate, and revoke is recorded.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="keycard" role="figure" aria-label="API key example">
+        <div class="keycard__key">
+          <span class="keycard__key-prefix">bvp_live_</span>
+          <span class="keycard__key-body">7f2a3c8d4b9e1f0a6c2d5e8b1f4a7c9d</span>
+          <span class="keycard__key-status">Active</span>
+        </div>
+        <dl class="keycard__row">
+          <dt>Name</dt><dd>Production &middot; Marketing ops</dd>
+          <dt>Scope</dt><dd>enterprise:acme &middot; brand:prod</dd>
+          <dt>Created</dt><dd>2026-02-10 &middot; by kate@acme.com</dd>
+          <dt>Last used</dt><dd>3 minutes ago &middot; 1.4k req / 24h</dd>
+          <dt>Rate</dt><dd>500 req/min &middot; 50 burst</dd>
+        </dl>
+        <div style="display:flex; gap: var(--space-2); justify-content: flex-end;">
+          <button class="btn btn--ghost" style="height: 36px; padding: 0 var(--space-4); font-size: var(--text-xs);">Rotate</button>
+          <button class="btn btn--ghost" style="height: 36px; padding: 0 var(--space-4); font-size: var(--text-xs); color: var(--color-signal-risk); border-color: color-mix(in srgb, var(--color-signal-risk) 30%, var(--color-border));">Revoke</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================= SDKs ============================= -->
+  <section class="sdks">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Client libraries</span>
+        <h2 class="display-md">SDKs for the languages your stack speaks.</h2>
+      </div>
+
+      <div class="sdks__grid">
+
+        <article class="sdk">
+          <div class="sdk__head">
+            <div class="sdk__lang">TypeScript</div>
+            <span class="sdk__status" data-state="stable">Stable</span>
+          </div>
+          <div class="sdk__install">npm i @brandplio/sdk</div>
+          <a href="#" class="muted" style="font-size: var(--text-xs);">Docs →</a>
+        </article>
+
+        <article class="sdk">
+          <div class="sdk__head">
+            <div class="sdk__lang">Python</div>
+            <span class="sdk__status" data-state="stable">Stable</span>
+          </div>
+          <div class="sdk__install">pip install brandplio</div>
+          <a href="#" class="muted" style="font-size: var(--text-xs);">Docs →</a>
+        </article>
+
+        <article class="sdk">
+          <div class="sdk__head">
+            <div class="sdk__lang">Go</div>
+            <span class="sdk__status" data-state="beta">Beta</span>
+          </div>
+          <div class="sdk__install">go get github.com/brandplio/go-sdk</div>
+          <a href="#" class="muted" style="font-size: var(--text-xs);">Docs →</a>
+        </article>
+
+        <article class="sdk">
+          <div class="sdk__head">
+            <div class="sdk__lang">Ruby</div>
+            <span class="sdk__status" data-state="soon">Coming soon</span>
+          </div>
+          <div class="sdk__install">gem install brandplio</div>
+          <a href="#" class="muted" style="font-size: var(--text-xs);">Watch the repo →</a>
+        </article>
+
+        <article class="sdk">
+          <div class="sdk__head">
+            <div class="sdk__lang">MCP server</div>
+            <span class="sdk__status" data-state="stable">Stable</span>
+          </div>
+          <div class="sdk__install">npx @brandplio/mcp</div>
+          <a href="#" class="muted" style="font-size: var(--text-xs);">Docs →</a>
+        </article>
+
+        <article class="sdk">
+          <div class="sdk__head">
+            <div class="sdk__lang">CLI</div>
+            <span class="sdk__status" data-state="stable">Stable</span>
+          </div>
+          <div class="sdk__install">brew install brandplio/tap/bvp</div>
+          <a href="#" class="muted" style="font-size: var(--text-xs);">Docs →</a>
+        </article>
+
+        <article class="sdk">
+          <div class="sdk__head">
+            <div class="sdk__lang">OpenAPI</div>
+            <span class="sdk__status" data-state="stable">3.1</span>
+          </div>
+          <div class="sdk__install">curl …/openapi.yaml</div>
+          <a href="#" class="muted" style="font-size: var(--text-xs);">Download →</a>
+        </article>
+
+        <article class="sdk">
+          <div class="sdk__head">
+            <div class="sdk__lang">Postman</div>
+            <span class="sdk__status" data-state="stable">Collection</span>
+          </div>
+          <div class="sdk__install">postman import …</div>
+          <a href="#" class="muted" style="font-size: var(--text-xs);">Import →</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= STACK ============================= -->
+  <section class="stack">
+    <div class="container">
+      <p class="stack__label">Built on a modern stack</p>
+      <div class="stack__row">
+        <span>Fastify</span>
+        <span>Next.js</span>
+        <span>Postgres</span>
+        <span>Anthropic</span>
+        <span>Zod</span>
+        <span>Railway</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= CTA BAND ============================= -->
+  <section class="dev-cta" id="sandbox">
+    <div class="container">
+      <div class="dev-cta__inner">
+        <div>
+          <h2>Stop re-engineering brand prompts for every tool.</h2>
+          <p>Grab a sandbox API key, ship the first integration in an afternoon, and let us show you the MCP story on a 30-minute call.</p>
+        </div>
+        <div class="dev-cta__actions">
+          <a href="#" class="btn btn--primary btn--lg">Get sandbox key</a>
+          <a href="../#demo" class="btn btn--ghost btn--lg">Book a demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================= FOOTER ============================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__brand-name">Brandplio</div>
+        <p class="footer__tag">Brand voice for the agent era. Extract it once, serve it everywhere.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="../product/">Overview</a></li>
+          <li><a href="../#capabilities">Capabilities</a></li>
+          <li><a href="../#pricing">Pricing</a></li>
+          <li><a href="#">Changelog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Developers</h4>
+        <ul>
+          <li><a href="#reference">API reference</a></li>
+          <li><a href="#">MCP server</a></li>
+          <li><a href="#">Docs</a></li>
+          <li><a href="#">Status</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Customers</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div>&copy; <span id="year">2026</span> Brandplio, Inc.</div>
+      <div>Crafted with care in vanilla HTML, CSS, and JavaScript.</div>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../scripts/main.js"></script>
+
+</body>
+</html>

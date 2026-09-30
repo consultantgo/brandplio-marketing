@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<title>Brandplio: Teach AI your brand once.</title>
+<meta name="description" content="Brandplio learns your brand from your website, then gives every tool and AI what it needs to write like you." />
+<meta property="og:title" content="Brandplio: Teach AI your brand once" />
+<meta property="og:description" content="Brandplio learns your brand from your website, then feeds it to every tool, teammate, and AI you use, so everything sounds like you." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://brandplio.com/" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://brandplio.com/" />
+
+<!-- Theme bootstrap — runs before first paint to avoid flash -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('bp:theme');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+<!-- Fonts: Inter + Inter Display + JetBrains Mono -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+<link rel="stylesheet" href="styles/tokens.css" />
+<link rel="stylesheet" href="styles/base.css" />
+<link rel="stylesheet" href="styles/components.css" />
+<link rel="stylesheet" href="styles/home.css" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23C67B2A'/%3E%3Cpath d='M10 9h6.5a4.5 4.5 0 0 1 3.2 7.7A5 5 0 0 1 17 25H10V9zm3 3v4h3.2a2 2 0 1 0 0-4H13zm0 7v3h3.8a1.5 1.5 0 1 0 0-3H13z' fill='%230A0A0C'/%3E%3C/svg%3E" />
+</head>
+
+<body>
+
+<!-- ============================= NAV ============================= -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="/" class="nav__brand" aria-label="Brandplio home">
+      <svg class="nav__brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <style>.bp-m-bg{fill:var(--color-accent)}.bp-m-fg{fill:var(--color-ink-on-accent)}</style>
+        <rect class="bp-m-bg" width="32" height="32" rx="8" />
+        <path class="bp-m-fg" d="M10 9h6.5a4.5 4.5 0 0 1 3.2 7.7A5 5 0 0 1 17 25H10V9zm3 3v4h3.2a2 2 0 1 0 0-4H13zm0 7v3h3.8a1.5 1.5 0 1 0 0-3H13z"/>
+      </svg>
+      Brandplio
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="product/" class="nav__link">Product</a>
+      <a href="developers/" class="nav__link">Developers</a>
+      <a href="#use-cases" class="nav__link">Use cases</a>
+      <a href="#pricing" class="nav__link">Pricing</a>
+      <a href="#" class="nav__link">Docs</a>
+    </nav>
+
+    <div class="nav__actions">
+      <button class="nav__theme" type="button" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a href="#" class="btn btn--plain">Sign in</a>
+      <a href="#demo" class="btn btn--primary">Book a demo</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================= HERO ============================= -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow hero__eyebrow">Brand voice for the agent era</span>
+
+        <h1 class="display-xl hero__headline">
+          Teach AI your brand <em>once</em>.
+        </h1>
+
+        <p class="lede hero__sub">
+          Brandplio learns your brand from your website, then feeds it to every
+          tool, teammate, and AI you use. Everything sounds like you, without
+          the re-explaining.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#demo" class="btn btn--primary btn--lg">Book a demo</a>
+          <a href="#analyze" class="btn btn--ghost btn--lg">
+            Analyze your site
+            <span class="btn__arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="hero__assurance" role="list">
+          <span role="listitem">Set up in minutes</span>
+          <span role="listitem">Cancel anytime</span>
+          <span role="listitem">MCP &amp; REST API</span>
+        </div>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <!-- Hero diagram: site scan → five layers → fan-out to tools -->
+        <svg class="hero-diagram" viewBox="0 0 560 560" role="img" aria-label="Animated diagram: Brandplio scans a website, fills five brand layers, and serves them to downstream tools">
+          <style>
+            .hd-frame       { fill: var(--color-bg-elevated); stroke: var(--color-border-strong); stroke-width: 1; }
+            .hd-chrome      { fill: var(--color-surface-sunken); }
+            .hd-chrome-dot  { fill: var(--color-border-strong); }
+            .hd-head        { fill: var(--color-ink); }
+            .hd-line        { fill: var(--color-ink-muted); }
+            .hd-hero        { fill: var(--color-surface-sunken); }
+            .hd-btn         { fill: var(--color-accent); }
+            .hd-btn-alt     { fill: none; stroke: var(--color-ink-muted); stroke-width: 1; }
+            .hd-arrow       { stroke: var(--color-border-strong); stroke-width: 1.2; fill: none; }
+            .hd-stack-bg    { fill: var(--color-surface); stroke: var(--color-border); stroke-width: 1; }
+            .hd-label       { fill: var(--color-ink-subtle); font-family: var(--font-body); font-size: 8px; letter-spacing: 1.2px; text-transform: uppercase; }
+            .hd-label-lg    { fill: var(--color-ink-subtle); font-family: var(--font-body); font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase; }
+            .hd-row-bg      { fill: var(--color-bg-elevated); stroke: var(--color-border); }
+            .hd-row-text    { fill: var(--color-ink); font-family: var(--font-body); font-size: 10px; font-weight: 500; }
+            .hd-dot-fill    { fill: var(--color-ink-on-accent); }
+            .hd-fan         { stroke: var(--color-accent); stroke-width: 1.2; fill: none; stroke-linecap: round; }
+            .hd-tool-bg     { fill: var(--color-bg-elevated); stroke: var(--color-border-strong); }
+            .hd-tool-meta   { fill: var(--color-ink-subtle); font-family: var(--font-body); font-size: 8px; letter-spacing: 1px; }
+            .hd-tool-name   { fill: var(--color-ink); font-family: var(--font-body); font-size: 10px; font-weight: 600; }
+          </style>
+          <defs>
+            <linearGradient id="accentH" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="var(--color-accent)" stop-opacity="1"/>
+              <stop offset="1" stop-color="var(--color-accent)" stop-opacity="0.4"/>
+            </linearGradient>
+            <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="4" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- Labels -->
+          <text class="hd-label-lg" x="24" y="76">SOURCE</text>
+          <text class="hd-label-lg" x="486" y="58">DOWNSTREAM</text>
+
+          <!-- —— Website frame (left) —— -->
+          <g class="site" transform="translate(24 90)">
+            <rect class="hd-frame" x="0" y="0" width="140" height="170" rx="10"/>
+            <rect class="hd-chrome" x="0" y="0" width="140" height="18" rx="10"/>
+            <rect class="hd-chrome" x="0" y="9" width="140" height="9"/>
+            <circle class="hd-chrome-dot" cx="8"  cy="9" r="2"/>
+            <circle class="hd-chrome-dot" cx="16" cy="9" r="2"/>
+            <circle class="hd-chrome-dot" cx="24" cy="9" r="2"/>
+
+            <g class="site-content">
+              <rect class="hd-head" x="12" y="30"  width="60"  height="6" rx="2"/>
+              <rect class="hd-line" x="12" y="42"  width="90"  height="4" rx="2"/>
+              <rect class="hd-line" x="12" y="50"  width="76"  height="4" rx="2"/>
+              <rect class="hd-hero" x="12" y="68"  width="116" height="26" rx="4"/>
+              <rect class="hd-line" x="12" y="100" width="54"  height="4" rx="2"/>
+              <rect class="hd-line" x="12" y="108" width="86"  height="4" rx="2"/>
+              <rect class="hd-line" x="12" y="116" width="70"  height="4" rx="2"/>
+              <rect class="hd-btn"     x="12" y="134" width="42" height="16" rx="8" opacity="0.85"/>
+              <rect class="hd-btn-alt" x="60" y="134" width="40" height="16" rx="8"/>
+            </g>
+
+            <!-- scanning line -->
+            <rect class="scan-line" x="0" y="18" width="140" height="2" fill="url(#accentH)" filter="url(#softGlow)"/>
+          </g>
+
+          <!-- Arrow site → layers -->
+          <path class="hd-arrow" d="M168 175 L210 175"/>
+          <path class="hd-arrow" d="M204 170 L214 175 L204 180" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <!-- —— Five layers —— -->
+          <g class="layers-stack" transform="translate(218 90)">
+            <rect class="hd-stack-bg" x="0" y="-10" width="164" height="190" rx="12"/>
+            <text class="hd-label" x="12" y="6">BRAND LAYERS</text>
+
+            <g transform="translate(12 18)">
+              <g class="layer-row">
+                <rect class="hd-row-bg" x="0" y="0" width="140" height="26" rx="6"/>
+                <rect class="layer-bar" x="0" y="0" width="140" height="26" rx="6" fill="url(#accentH)" opacity="0.85"/>
+                <circle class="layer-dot hd-dot-fill" cx="12" cy="13" r="3"/>
+                <text class="hd-row-text" x="24" y="17">Voice</text>
+              </g>
+              <g class="layer-row" transform="translate(0 32)">
+                <rect class="hd-row-bg" x="0" y="0" width="140" height="26" rx="6"/>
+                <rect class="layer-bar" x="0" y="0" width="140" height="26" rx="6" fill="url(#accentH)" opacity="0.85"/>
+                <circle class="layer-dot hd-dot-fill" cx="12" cy="13" r="3"/>
+                <text class="hd-row-text" x="24" y="17">Personas</text>
+              </g>
+              <g class="layer-row" transform="translate(0 64)">
+                <rect class="hd-row-bg" x="0" y="0" width="140" height="26" rx="6"/>
+                <rect class="layer-bar" x="0" y="0" width="140" height="26" rx="6" fill="url(#accentH)" opacity="0.85"/>
+                <circle class="layer-dot hd-dot-fill" cx="12" cy="13" r="3"/>
+                <text class="hd-row-text" x="24" y="17">Products</text>
+              </g>
+              <g class="layer-row" transform="translate(0 96)">
+                <rect class="hd-row-bg" x="0" y="0" width="140" height="26" rx="6"/>
+                <rect class="layer-bar" x="0" y="0" width="140" height="26" rx="6" fill="url(#accentH)" opacity="0.85"/>
+                <circle class="layer-dot hd-dot-fill" cx="12" cy="13" r="3"/>
+                <text class="hd-row-text" x="24" y="17">Tones</text>
+              </g>
+              <g class="layer-row" transform="translate(0 128)">
+                <rect class="hd-row-bg" x="0" y="0" width="140" height="26" rx="6"/>
+                <rect class="layer-bar" x="0" y="0" width="140" height="26" rx="6" fill="url(#accentH)" opacity="0.85"/>
+                <circle class="layer-dot hd-dot-fill" cx="12" cy="13" r="3"/>
+                <text class="hd-row-text" x="24" y="17">Vocabulary</text>
+              </g>
+            </g>
+          </g>
+
+          <!-- Fan-out lines (stagger via --i) -->
+          <path class="fan-line hd-fan" style="--i: 0" d="M382 116 C 430 116, 450  90, 486  90"/>
+          <path class="fan-line hd-fan" style="--i: 1" d="M382 148 C 430 148, 450 140, 486 160"/>
+          <path class="fan-line hd-fan" style="--i: 2" d="M382 180 C 430 180, 450 210, 486 230"/>
+          <path class="fan-line hd-fan" style="--i: 3" d="M382 212 C 430 212, 450 280, 486 300"/>
+          <path class="fan-line hd-fan" style="--i: 4" d="M382 244 C 430 244, 450 340, 486 370"/>
+          <path class="fan-line hd-fan" style="--i: 5" d="M382 180 C 420 180, 430 420, 486 440"/>
+
+          <!-- Tool nodes (stagger via --i) -->
+          <g class="tool-node" style="--i: 0" transform="translate(486 72)">
+            <rect class="hd-tool-bg" x="0" y="0" width="56" height="36" rx="8"/>
+            <text class="hd-tool-meta" x="8" y="15">AGENT</text>
+            <text class="hd-tool-name" x="8" y="28">Claude</text>
+          </g>
+          <g class="tool-node" style="--i: 1" transform="translate(486 142)">
+            <rect class="hd-tool-bg" x="0" y="0" width="56" height="36" rx="8"/>
+            <text class="hd-tool-meta" x="8" y="15">SEND</text>
+            <text class="hd-tool-name" x="8" y="28">Email</text>
+          </g>
+          <g class="tool-node" style="--i: 2" transform="translate(486 212)">
+            <rect class="hd-tool-bg" x="0" y="0" width="56" height="36" rx="8"/>
+            <text class="hd-tool-meta" x="8" y="15">SITE</text>
+            <text class="hd-tool-name" x="8" y="28">CMS</text>
+          </g>
+          <g class="tool-node" style="--i: 3" transform="translate(486 282)">
+            <rect class="hd-tool-bg" x="0" y="0" width="56" height="36" rx="8"/>
+            <text class="hd-tool-meta" x="8" y="15">POST</text>
+            <text class="hd-tool-name" x="8" y="28">Social</text>
+          </g>
+          <g class="tool-node" style="--i: 4" transform="translate(486 352)">
+            <rect class="hd-tool-bg" x="0" y="0" width="56" height="36" rx="8"/>
+            <text class="hd-tool-meta" x="8" y="15">DECK</text>
+            <text class="hd-tool-name" x="8" y="28">Sales</text>
+          </g>
+          <g class="tool-node" style="--i: 5" transform="translate(486 422)">
+            <rect class="hd-tool-bg" x="0" y="0" width="56" height="36" rx="8"/>
+            <text class="hd-tool-meta" x="8" y="15">SUPPORT</text>
+            <text class="hd-tool-name" x="8" y="28">Chat</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= LOGOS ============================= -->
+  <section class="logos">
+    <div class="container">
+      <p class="logos__label">Trusted by brand and content teams at</p>
+      <div class="logos__row">
+        <div class="logos__item">Meridian</div>
+        <div class="logos__item">Northwind</div>
+        <div class="logos__item">Axiom</div>
+        <div class="logos__item">Cartograph</div>
+        <div class="logos__item">Helix Labs</div>
+        <div class="logos__item">Lumen&amp;Co</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= PROBLEM ============================= -->
+  <section class="problem">
+    <div class="container">
+      <h2 class="problem__quote">
+        Every team writes with AI now. Every AI starts from zero.
+        <span class="keep">Your brand doesn&rsquo;t.</span>
+      </h2>
+
+      <div class="problem__contrast">
+        <div class="voice-card" data-tone="email">
+          <div class="voice-card__channel">Email · marketing</div>
+          <p class="voice-card__text">
+            &ldquo;We&rsquo;re thrilled to unveil our next-generation platform,
+            reimagined from the ground up for the modern enterprise.&rdquo;
+          </p>
+        </div>
+        <div class="voice-card" data-tone="social">
+          <div class="voice-card__channel">Social · LinkedIn</div>
+          <p class="voice-card__text">
+            &ldquo;🚀 Big news! Our game-changing AI-powered platform is finally
+            here and it&rsquo;s going to revolutionize how you work.&rdquo;
+          </p>
+        </div>
+        <div class="voice-card" data-tone="sales">
+          <div class="voice-card__channel">Sales · deck slide</div>
+          <p class="voice-card__text">
+            &ldquo;Leveraging synergistic omnichannel enablement, our solution
+            drives best-in-class outcomes for forward-thinking organizations.&rdquo;
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= FIVE LAYERS ============================= -->
+  <section class="layers section" id="product">
+    <div class="container layers__grid">
+      <div>
+        <span class="eyebrow" style="margin-bottom: var(--space-6); display:inline-flex;">The architecture</span>
+        <h2 class="display-lg" style="margin-bottom: var(--space-6);">
+          Your whole brand, in five simple parts.
+        </h2>
+        <p class="lede">
+          Not a doc or a PDF that sits unread. A living system every tool can
+          pull from, so every piece of content, human or AI, starts from the
+          same place.
+        </p>
+        <div style="margin-top: var(--space-8); display:flex; gap: var(--space-3);">
+          <a href="#" class="btn btn--ghost">See the schema<span class="btn__arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <div class="layers__diagram" aria-hidden="false">
+
+        <article class="layer">
+          <div class="layer__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M8 7v10M4 10v4M16 7v10M20 10v4"/></svg>
+          </div>
+          <div class="layer__body">
+            <div class="layer__name">Voice</div>
+            <div class="layer__desc">Confident, warm, technical: the way your company sounds, codified.</div>
+          </div>
+          <div class="layer__example">direct · warm</div>
+        </article>
+
+        <article class="layer">
+          <div class="layer__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><circle cx="17" cy="10" r="3"/><path d="M2 21a7 7 0 0 1 14 0M14 21a5 5 0 0 1 8-4"/></svg>
+          </div>
+          <div class="layer__body">
+            <div class="layer__name">Personas</div>
+            <div class="layer__desc">Who you&rsquo;re talking to, with psychographics and decision drivers.</div>
+          </div>
+          <div class="layer__example">Ops Director</div>
+        </article>
+
+        <article class="layer">
+          <div class="layer__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5M3 18l9 5 9-5"/></svg>
+          </div>
+          <div class="layer__body">
+            <div class="layer__name">Products</div>
+            <div class="layer__desc">Positioning, proof points, and what you&rsquo;re allowed to claim.</div>
+          </div>
+          <div class="layer__example">Platform · API</div>
+        </article>
+
+        <article class="layer">
+          <div class="layer__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18M3 12h18"/></svg>
+          </div>
+          <div class="layer__body">
+            <div class="layer__name">Tones</div>
+            <div class="layer__desc">Situational shading (celebratory, reassuring, urgent) with guardrails.</div>
+          </div>
+          <div class="layer__example">reassuring</div>
+        </article>
+
+        <article class="layer">
+          <div class="layer__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
+          </div>
+          <div class="layer__body">
+            <div class="layer__name">Vocabulary</div>
+            <div class="layer__desc">Words you use, words you don&rsquo;t, terms to handle with care.</div>
+          </div>
+          <div class="layer__example">+ &ldquo;workspace&rdquo; / &minus; &ldquo;users&rdquo;</div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= CAPABILITIES ============================= -->
+  <section class="section" id="capabilities">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Capabilities</span>
+        <h2 class="display-lg">Everything you need to keep content on brand.</h2>
+        <p class="lede">Learn your brand, write on-brand copy, catch mistakes before they ship, and feed it all to your AI tools. No consulting engagement required.</p>
+      </div>
+
+      <div class="caps__grid">
+
+        <article class="cap">
+          <div class="cap__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          </div>
+          <h3 class="cap__name">AI brand extraction</h3>
+          <p class="cap__desc">Point us at your website. We&rsquo;ll have a draft of your brand system in 10 minutes: voice, personas, products, tone, vocabulary.</p>
+        </article>
+
+        <article class="cap">
+          <div class="cap__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <h3 class="cap__name">On brand for every audience</h3>
+          <p class="cap__desc">Every mix of audience, product, and tone, ready for each channel. Set it up once, and your content stays on brand everywhere.</p>
+        </article>
+
+        <article class="cap">
+          <div class="cap__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>
+          </div>
+          <h3 class="cap__name">Tension detection</h3>
+          <p class="cap__desc">We catch off-brand combinations before they ship, like urgent + fear-driven, or technical + audience mismatch.</p>
+        </article>
+
+        <article class="cap">
+          <div class="cap__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="18" cy="18" r="2.5"/></svg>
+          </div>
+          <h3 class="cap__name">Public API &amp; MCP server</h3>
+          <p class="cap__desc">Serve brand to every tool. Native integration with Claude and any MCP-compatible agent, straight from the context layer.</p>
+        </article>
+
+        <article class="cap">
+          <div class="cap__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v6M14 14h4M14 17h3"/></svg>
+          </div>
+          <h3 class="cap__name">Multiple brands, one place</h3>
+          <p class="cap__desc">Manage every brand or client from one hub, each fully isolated. Switch between them in a click.</p>
+        </article>
+
+        <article class="cap">
+          <div class="cap__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l2 2 4-4"/><path d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6l8-3z"/></svg>
+          </div>
+          <h3 class="cap__name">Catch problems before they ship</h3>
+          <p class="cap__desc">Restricted words and off-brand content land in one review queue. Approve or fix before anything goes out.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= DEVELOPER SECTION ============================= -->
+  <section class="devband section" id="developers">
+    <div class="container devband__grid">
+      <div class="devband__text">
+        <span class="eyebrow">Built for the agent era</span>
+        <h2 class="display-md">Your brand, one API call away from every tool you deploy.</h2>
+        <p class="lede">
+          Brandplio exposes brand context through a public REST API and a
+          Model Context Protocol server, so every AI agent on your stack
+          pulls the same truth, not a stale copy.
+        </p>
+
+        <ul class="dev-feat">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Native MCP server.</b> Claude Desktop, Cursor, and any MCP-aware agent connects in one config block.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Account-scoped keys.</b> <code>bvp_</code>-prefixed keys with per-brand scoping and rotation.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Cached prompt blocks.</b> Every combination is pre-assembled and versioned, so there&rsquo;s zero cold-start latency.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Channel-aware.</b> Ask for a LinkedIn post, get LinkedIn guardrails. Same persona, different constraints.</span>
+          </li>
+        </ul>
+
+        <div style="display:flex; gap: var(--space-3); flex-wrap: wrap;">
+          <a href="#" class="btn btn--primary">Read the docs<span class="btn__arrow" aria-hidden="true">→</span></a>
+          <a href="#" class="btn btn--ghost">Get API sandbox</a>
+        </div>
+      </div>
+
+      <div class="devband__stack">
+
+        <div class="code" role="figure" aria-label="API request example">
+          <div class="code__head">
+            <div class="code__lights" aria-hidden="true"><span></span><span></span><span></span></div>
+            <span>TypeScript</span>
+            <button class="code__copy" type="button" data-copy>Copy</button>
+          </div>
+<pre class="code__body"><span class="tok-comment">// Fetch a channel-aware prompt for any persona × product × tone</span>
+<span class="tok-kw">const</span> res = <span class="tok-kw">await</span> <span class="tok-fn">fetch</span>(
+  <span class="tok-str">"https://api.brandplio.com/api/acme/context"</span> +
+  <span class="tok-str">"?persona=ops-director&amp;product=platform&amp;tone=reassuring&amp;channel=email"</span>,
+  { headers: { <span class="tok-str">"Authorization"</span>: <span class="tok-str">`Bearer ${</span>apiKey<span class="tok-str">}`</span> } }
+);
+
+<span class="tok-kw">const</span> { prompt, tensions } = <span class="tok-kw">await</span> res.<span class="tok-fn">json</span>();
+
+<span class="tok-comment">// tensions[] flags off-brand combinations before you generate</span>
+<span class="tok-kw">if</span> (tensions.length) <span class="tok-fn">reviewQueue</span>.<span class="tok-fn">flag</span>(tensions);
+</pre>
+        </div>
+
+        <div class="mcp-panel" aria-label="Claude Desktop MCP connection">
+          <div class="mcp-panel__logo">B</div>
+          <div class="mcp-panel__text">
+            <b>Brandplio MCP</b>
+            <span>Connected to Claude Desktop · 12 brands · 847 combinations</span>
+          </div>
+          <div class="mcp-panel__status">live</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= USE CASES ============================= -->
+  <section class="section" id="use-cases">
+    <div class="container">
+      <div class="cases__head">
+        <div>
+          <span class="eyebrow">Use cases</span>
+          <h2 class="display-lg" style="margin-top: var(--space-3);">Start with your brand. Scale when you&rsquo;re ready.</h2>
+          <p class="lede" style="margin-top: var(--space-4);">One brand today, a roster of clients as you grow. The same system scales with you.</p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Use cases">
+          <button class="tab" role="tab" aria-selected="true"  data-case="ind">Individual brands</button>
+          <button class="tab" role="tab" aria-selected="false" data-case="agn">Agencies</button>
+        </div>
+      </div>
+
+      <article class="case-panel" data-panel="ind" data-active="true" role="tabpanel">
+        <div class="case-panel__body">
+          <h3 class="case-panel__title">Your brand, ready for every AI tool.</h3>
+          <p class="case-panel__copy">
+            Point Brandplio at your website and get a working brand system in
+            minutes: voice, audience, products, tone, and vocabulary. Then every
+            tool you write with, and every AI you prompt, pulls from the same
+            source instead of starting from a blank page.
+          </p>
+          <div class="case-panel__metric">
+            <strong>10 min</strong>
+            <span>from your URL to a brand system you can use in your next email, post, or page.</span>
+          </div>
+        </div>
+        <aside class="case-panel__aside">
+          <div class="aside-card">
+            <div class="aside-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            </div>
+            <div>
+              <div class="aside-card__title">Site extracted</div>
+              <div class="aside-card__meta">Voice, personas, products, tone</div>
+            </div>
+            <span class="tag">Ready</span>
+          </div>
+          <div class="aside-card">
+            <div class="aside-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="18" cy="18" r="2.5"/></svg>
+            </div>
+            <div>
+              <div class="aside-card__title">Connected to Claude</div>
+              <div class="aside-card__meta">One MCP config block</div>
+            </div>
+            <span class="tag tag--ghost">Live</span>
+          </div>
+          <div class="aside-card">
+            <div class="aside-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l5 5v13H6zM15 3v5h5"/></svg>
+            </div>
+            <div>
+              <div class="aside-card__title">First on-brand draft</div>
+              <div class="aside-card__meta">Email · in minutes</div>
+            </div>
+          </div>
+        </aside>
+      </article>
+
+      <article class="case-panel" data-panel="agn" role="tabpanel">
+        <div class="case-panel__body">
+          <h3 class="case-panel__title">The brand system, productized.</h3>
+          <p class="case-panel__copy">
+            Agencies use Brandplio to turn strategy engagements into a living,
+            API-accessible brand asset. Deliver the context layer, not just the
+            deck. Clients stay on brand long after the invoice clears.
+          </p>
+          <div class="case-panel__metric">
+            <strong>+38%</strong>
+            <span>retainer uplift among agency partners who ship Brandplio as a deliverable.</span>
+          </div>
+        </div>
+        <aside class="case-panel__aside">
+          <div class="aside-card">
+            <div class="aside-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
+            </div>
+            <div>
+              <div class="aside-card__title">Client workspace</div>
+              <div class="aside-card__meta">White-label · per-account scoping</div>
+            </div>
+          </div>
+          <div class="aside-card">
+            <div class="aside-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l5 5v13H6zM15 3v5h5"/></svg>
+            </div>
+            <div>
+              <div class="aside-card__title">Brand handoff export</div>
+              <div class="aside-card__meta">JSON + prompt bundle</div>
+            </div>
+            <span class="tag tag--ghost">Included</span>
+          </div>
+          <div class="aside-card">
+            <div class="aside-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V10M5 20V4M19 20v-8"/></svg>
+            </div>
+            <div>
+              <div class="aside-card__title">Billing</div>
+              <div class="aside-card__meta">Per-client seats · usage caps</div>
+            </div>
+          </div>
+        </aside>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================= TESTIMONIALS ============================= -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Proof</span>
+        <h2 class="display-md">What teams are saying, in their own words.</h2>
+      </div>
+
+      <div class="testi">
+        <article class="quote quote--primary">
+          <div class="quote__mark" aria-hidden="true">&ldquo;</div>
+          <p class="quote__text">
+            We stopped re-engineering prompts for every tool. Our brand lives
+            in one place, and our AI agents just&hellip; know it. That alone has
+            paid for Brandplio three times over.
+          </p>
+          <div class="quote__author">
+            <div class="quote__avatar" aria-hidden="true">SV</div>
+            <div>
+              <strong>Sasha Veld</strong>
+              <small>VP Brand &amp; Content · Meridian Holdings</small>
+            </div>
+          </div>
+        </article>
+
+        <article class="quote quote--small">
+          <div class="quote__mark" aria-hidden="true">&ldquo;</div>
+          <p class="quote__text">
+            Tension detection caught three campaigns before legal did. That&rsquo;s a
+            ROI argument I can walk into any review with.
+          </p>
+          <div class="quote__author">
+            <div class="quote__avatar" aria-hidden="true">JM</div>
+            <div>
+              <strong>Jordan Matsui</strong>
+              <small>Head of Compliance Content · fintech</small>
+            </div>
+          </div>
+        </article>
+
+        <article class="quote quote--small">
+          <div class="quote__mark" aria-hidden="true">&ldquo;</div>
+          <p class="quote__text">
+            The MCP server made us rethink every integration on our roadmap.
+            We deleted half of them.
+          </p>
+          <div class="quote__author">
+            <div class="quote__avatar" aria-hidden="true">RK</div>
+            <div>
+              <strong>Rohit Kaur</strong>
+              <small>Platform Engineering Lead</small>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= PRICING TEASER ============================= -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-head" style="text-align:center; margin-left:auto; margin-right:auto;">
+        <span class="eyebrow" style="justify-self: center;">Pricing</span>
+        <h2 class="display-lg">Start with one brand. Scale as you grow.</h2>
+      </div>
+
+      <div class="pricing pricing--duo">
+
+        <article class="tier">
+          <h3 class="tier__name">Starter</h3>
+          <div class="tier__price">Starting at $49<small>&nbsp;/ mo</small></div>
+          <p class="tier__desc">For an individual brand or freelancer who wants AI-ready context, not another doc to maintain.</p>
+          <ul class="tier__list">
+            <li>1 brand</li>
+            <li>MCP + REST API access</li>
+            <li>10,000 requests / mo</li>
+            <li>Site analyzer included</li>
+          </ul>
+          <a href="#" class="btn btn--ghost" style="margin-top:auto;">Start free trial</a>
+        </article>
+
+        <article class="tier tier--featured">
+          <span class="tier__badge">Most popular</span>
+          <h3 class="tier__name">Growth</h3>
+          <div class="tier__price">Starting at $399<small>&nbsp;/ mo</small></div>
+          <p class="tier__desc">For agencies and scaling teams. Everything in Starter, plus multi-brand and team controls.</p>
+          <ul class="tier__list">
+            <li>Up to 10 brands</li>
+            <li>100,000 requests / mo</li>
+            <li>Role-based permissions</li>
+            <li>Context-filtering rules</li>
+          </ul>
+          <a href="#demo" class="btn btn--accent" style="margin-top:auto;">Book a demo</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= FINAL CTA ============================= -->
+  <section class="section" id="demo">
+    <div class="container">
+      <div class="cta-band">
+        <span class="eyebrow" style="justify-content:center; color: var(--color-accent);">Ready when you are</span>
+        <h2 class="display-lg" style="margin-top: var(--space-4);">Make the next thing you ship on-brand, by default.</h2>
+        <p class="lede">30-minute demo. See your own site extracted, live, on the call.</p>
+        <div class="cta-band__actions">
+          <a href="#" class="btn btn--primary btn--lg">Book a demo</a>
+          <a href="#" class="btn btn--ghost btn--lg">Read the docs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================= FOOTER ============================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__brand-name">Brandplio</div>
+        <p class="footer__tag">Brand voice for the agent era. Extract it once, serve it everywhere.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="product/">Overview</a></li>
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#">Changelog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Developers</h4>
+        <ul>
+          <li><a href="developers/">API</a></li>
+          <li><a href="#">MCP server</a></li>
+          <li><a href="#">Docs</a></li>
+          <li><a href="#">Status</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Customers</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div>&copy; <span id="year">2026</span> Brandplio, Inc.</div>
+      <div>Crafted with care in vanilla HTML, CSS, and JavaScript.</div>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="scripts/main.js"></script>
+
+</body>
+</html>

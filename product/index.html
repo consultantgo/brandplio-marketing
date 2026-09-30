@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<title>Product · Brandplio</title>
+<meta name="description" content="A walkthrough of every part of Brandplio: the analyzer, your combinations, tension detection, and the review queue." />
+<link rel="canonical" href="https://brandplio.com/product/" />
+
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('bp:theme');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+<link rel="stylesheet" href="../styles/tokens.css" />
+<link rel="stylesheet" href="../styles/base.css" />
+<link rel="stylesheet" href="../styles/components.css" />
+<link rel="stylesheet" href="../styles/home.css" />
+<link rel="stylesheet" href="../styles/product.css" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23C67B2A'/%3E%3Cpath d='M10 9h6.5a4.5 4.5 0 0 1 3.2 7.7A5 5 0 0 1 17 25H10V9zm3 3v4h3.2a2 2 0 1 0 0-4H13zm0 7v3h3.8a1.5 1.5 0 1 0 0-3H13z' fill='%230A0A0C'/%3E%3C/svg%3E" />
+</head>
+
+<body>
+
+<!-- ============================= NAV ============================= -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="../" class="nav__brand" aria-label="Brandplio home">
+      <svg class="nav__brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <style>.bp-m-bg{fill:var(--color-accent)}.bp-m-fg{fill:var(--color-ink-on-accent)}</style>
+        <rect class="bp-m-bg" width="32" height="32" rx="8" />
+        <path class="bp-m-fg" d="M10 9h6.5a4.5 4.5 0 0 1 3.2 7.7A5 5 0 0 1 17 25H10V9zm3 3v4h3.2a2 2 0 1 0 0-4H13zm0 7v3h3.8a1.5 1.5 0 1 0 0-3H13z"/>
+      </svg>
+      Brandplio
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="./" class="nav__link" aria-current="page" style="color: var(--color-ink);">Product</a>
+      <a href="../developers/" class="nav__link">Developers</a>
+      <a href="../#use-cases" class="nav__link">Use cases</a>
+      <a href="../#pricing" class="nav__link">Pricing</a>
+      <a href="#" class="nav__link">Docs</a>
+    </nav>
+
+    <div class="nav__actions">
+      <button class="nav__theme" type="button" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a href="#" class="btn btn--plain">Sign in</a>
+      <a href="../#demo" class="btn btn--primary">Book a demo</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================= HERO ============================= -->
+  <section class="pr-hero">
+    <div class="container pr-hero__inner">
+      <span class="eyebrow">Product</span>
+      <h1>Every screen, built to make brand <em>obvious</em>.</h1>
+      <p class="lede">
+        From the analyzer that reads your site, to the combinations that feed
+        every AI tool you use. Here&rsquo;s how Brandplio works, screen by screen.
+      </p>
+
+      <nav class="pr-hero__toc" aria-label="On this page">
+        <a href="#extract">Extract</a>
+        <a href="#model">Model</a>
+        <a href="#compose">Compose</a>
+        <a href="#detect">Detect</a>
+        <a href="#serve">Serve</a>
+        <a href="#govern">Govern</a>
+        <a href="#deliver">Deliver</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ============================= WORKFLOW STRIP ============================= -->
+  <section class="workflow">
+    <div class="container">
+      <div class="workflow__row">
+        <div class="workflow__step">
+          <div class="workflow__num">01</div>
+          <div>
+            <div class="workflow__label">Extract</div>
+            <div class="workflow__desc">From your website, in minutes.</div>
+          </div>
+        </div>
+        <div class="workflow__step">
+          <div class="workflow__num">02</div>
+          <div>
+            <div class="workflow__label">Model</div>
+            <div class="workflow__desc">Five layers, one source of truth.</div>
+          </div>
+        </div>
+        <div class="workflow__step">
+          <div class="workflow__num">03</div>
+          <div>
+            <div class="workflow__label">Compose</div>
+            <div class="workflow__desc">Every combination, ready for your tools.</div>
+          </div>
+        </div>
+        <div class="workflow__step">
+          <div class="workflow__num">04</div>
+          <div>
+            <div class="workflow__label">Deliver</div>
+            <div class="workflow__desc">API, MCP, and skills for creators.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= EXTRACT ============================= -->
+  <section class="feat" id="extract">
+    <div class="container feat__inner">
+
+      <div class="feat__copy">
+        <span class="eyebrow feat__eyebrow">01 &middot; Extract</span>
+        <h2 class="feat__title">From a URL to a brand system. Two ways.</h2>
+        <p class="lede">
+          <b>Quick</b> crawls your public site automatically and proposes a full
+          brand system in minutes. <b>Advanced</b> puts you in control: pick the
+          exact pages that shape your voice, flag products inline, and see
+          afterward which pages actually mattered.
+        </p>
+
+        <ul class="feat__list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Sitemap-first discovery.</b> We pull <code>sitemap.xml</code> (and the index, gzipped variants, robots.txt directives), then fall back to a smart crawl if there&rsquo;s nothing to fetch.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Curated review with smart defaults.</b> Homepage, about, top products, recent blog posts, pricing, contact: pre-checked. Override anything with one click, up to 40 pages.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Per-URL roles.</b> Voice, product, or excluded: every page declares what it shapes before extraction even runs.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Page-level attribution after the run.</b> See exactly which URLs shaped brand voice, which were classified as products, and which were excluded. Auditable, not a black box.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Fast and low-cost.</b> Most runs finish in around two minutes.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="feat__visual">
+        <div class="frame">
+          <div class="frame__chrome">
+            <div class="frame__dots"><span></span><span></span><span></span></div>
+            <div class="frame__url">
+              <span class="frame__url-lock" aria-hidden="true"></span>
+              <span class="frame__url-text">app.brandplio.com/import</span>
+            </div>
+          </div>
+          <div class="frame__body">
+            <div class="analyzer" data-analyzer>
+
+              <!-- Mode toggle -->
+              <div class="analyzer__modes" role="tablist" aria-label="Analyzer mode">
+                <button class="analyzer__mode" role="tab" aria-selected="false" data-analyzer-mode="quick">Quick</button>
+                <button class="analyzer__mode" role="tab" aria-selected="true"  data-analyzer-mode="advanced">
+                  Advanced
+                  <span class="analyzer__mode-tag">New</span>
+                </button>
+              </div>
+
+              <div class="analyzer__input">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a9 9 0 0 1 0 18M12 3a9 9 0 0 0 0 18"/></svg>
+                <span>https://acme.com</span>
+                <span class="analyzer__input-button">Discover</span>
+              </div>
+
+              <!-- ——— Quick pane ——— -->
+              <div class="analyzer__pane" data-analyzer-pane="quick">
+                <div class="analyzer__status">Analysis complete &middot; 25 pages &middot; 1m 42s</div>
+
+                <div class="analyzer__results">
+                  <div class="analyzer__card">
+                    <div class="analyzer__card-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                    <span class="analyzer__card-label">Voice</span>
+                    <span class="analyzer__card-count">1</span>
+                    <span class="analyzer__card-name">confident &middot; warm</span>
+                  </div>
+                  <div class="analyzer__card">
+                    <div class="analyzer__card-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                    <span class="analyzer__card-label">Personas</span>
+                    <span class="analyzer__card-count">4</span>
+                    <span class="analyzer__card-name">members · donors · volunteers · partners</span>
+                  </div>
+                  <div class="analyzer__card">
+                    <div class="analyzer__card-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                    <span class="analyzer__card-label">Products</span>
+                    <span class="analyzer__card-count">3</span>
+                    <span class="analyzer__card-name">Membership · Storefront · Events</span>
+                  </div>
+                  <div class="analyzer__card">
+                    <div class="analyzer__card-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                    <span class="analyzer__card-label">Tones</span>
+                    <span class="analyzer__card-count">5</span>
+                    <span class="analyzer__card-name">warm · grateful · urgent · ...</span>
+                  </div>
+                  <div class="analyzer__card">
+                    <div class="analyzer__card-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                    <span class="analyzer__card-label">Vocabulary</span>
+                    <span class="analyzer__card-count">42</span>
+                    <span class="analyzer__card-name">18 preferred · 24 avoid</span>
+                  </div>
+                </div>
+
+<pre class="analyzer__log"><b>scraper</b>   → 25 pages crawled &middot; 188 KB indexed
+<b>extract</b>   → voice drafted, 4 personas inferred
+<b>extract</b>   → 3 products, 5 tones, 42 vocab terms
+<b>validate</b>  → import payload valid (Zod)
+<b>flags</b>     → 3 ambiguous claims routed to review
+<b>ready</b>     → import to workspace?</pre>
+              </div>
+
+              <!-- ——— Advanced pane ——— -->
+              <div class="analyzer__pane" data-analyzer-pane="advanced" data-active="true">
+
+                <div class="analyzer__discover">
+                  <div class="analyzer__discover-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  </div>
+                  <div class="analyzer__discover-text">
+                    <b>Sitemap discovered.</b> <span>487 URLs &middot; 12s</span>
+                  </div>
+                  <div class="analyzer__discover-badge">/sitemap.xml</div>
+                </div>
+
+                <div class="analyzer__list" role="group" aria-label="Discovered URLs">
+                  <div class="analyzer__list-head">
+                    <span>14 of 487 selected</span>
+                    <strong>smart defaults</strong>
+                  </div>
+
+                  <div class="analyzer__url" data-checked="true">
+                    <div class="analyzer__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                    <div class="analyzer__path">/</div>
+                    <div class="analyzer__type">home</div>
+                    <span class="analyzer__role analyzer__role--voice">voice</span>
+                  </div>
+                  <div class="analyzer__url" data-checked="true">
+                    <div class="analyzer__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                    <div class="analyzer__path">/about</div>
+                    <div class="analyzer__type">about</div>
+                    <span class="analyzer__role analyzer__role--voice">voice</span>
+                  </div>
+                  <div class="analyzer__url" data-checked="true">
+                    <div class="analyzer__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                    <div class="analyzer__path">/membership</div>
+                    <div class="analyzer__type">product</div>
+                    <span class="analyzer__role analyzer__role--product">product</span>
+                  </div>
+                  <div class="analyzer__url" data-checked="true">
+                    <div class="analyzer__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                    <div class="analyzer__path">/shop</div>
+                    <div class="analyzer__type">product</div>
+                    <span class="analyzer__role analyzer__role--product">product</span>
+                  </div>
+                  <div class="analyzer__url" data-checked="true">
+                    <div class="analyzer__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                    <div class="analyzer__path">/blog/why-brand-is-broken-in-the-ai-era</div>
+                    <div class="analyzer__type">blog</div>
+                    <span class="analyzer__role analyzer__role--voice">voice</span>
+                  </div>
+                  <div class="analyzer__url" data-checked="false">
+                    <div class="analyzer__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                    <div class="analyzer__path">/blog/year-in-review-2024</div>
+                    <div class="analyzer__type">blog</div>
+                    <span class="analyzer__role analyzer__role--excluded">excluded</span>
+                  </div>
+                  <div class="analyzer__url" data-checked="true">
+                    <div class="analyzer__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+                    <div class="analyzer__path">/pricing</div>
+                    <div class="analyzer__type">pricing</div>
+                    <span class="analyzer__role analyzer__role--voice">voice</span>
+                  </div>
+                </div>
+
+                <div class="analyzer__selection">
+                  <div class="analyzer__selection-counts">
+                    <span><strong>14</strong> selected</span>
+                    <span><strong>8</strong> voice</span>
+                    <span><strong>5</strong> products</span>
+                    <span><strong>1</strong> excluded</span>
+                  </div>
+                  <span class="analyzer__selection-go">Analyze 14 pages →</span>
+                </div>
+
+                <div class="analyzer__attribution">
+                  <div class="analyzer__attribution-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>
+                  </div>
+                  <div>
+                    <b>After the run, you&rsquo;ll see attribution.</b> Three cards
+                    show the URLs that shaped Brand Voice, the URLs classified as
+                    Products, and the URLs that were excluded, so you can audit
+                    exactly what fed the extraction.
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================= MODEL ============================= -->
+  <section class="feat feat--flip" id="model">
+    <div class="container feat__inner">
+
+      <div class="feat__copy">
+        <span class="eyebrow feat__eyebrow">02 &middot; Model</span>
+        <h2 class="feat__title">The brand, editable like code.</h2>
+        <p class="lede">
+          Every layer has its own simple editor. Change a persona, a product
+          claim, or a preferred word, and everything that depends on it stays
+          up to date automatically.
+        </p>
+
+        <ul class="feat__list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Always up to date.</b> Edit a tone, and every prompt that uses it stays current automatically.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Structured fields.</b> Drivers, pain points, proof points, not just a blob of marketing prose.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Versioned.</b> Every change is attributed, timestamped, and rollable-back.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="feat__visual">
+        <div class="frame">
+          <div class="frame__chrome">
+            <div class="frame__dots"><span></span><span></span><span></span></div>
+            <div class="frame__url">
+              <span class="frame__url-lock" aria-hidden="true"></span>
+              <span class="frame__url-text">app.brandplio.com/personas/loyal-members</span>
+            </div>
+          </div>
+          <div class="appshell">
+            <aside class="appshell__side">
+              <div class="appshell__brand">
+                <div class="appshell__brand-mark" aria-hidden="true"></div>
+                Brandplio
+              </div>
+              <div class="appshell__nav-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12 12 3l9 9M5 10v10h14V10"/></svg>
+                Dashboard
+              </div>
+              <div class="appshell__nav-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M8 7v10M4 10v4M16 7v10M20 10v4"/></svg>
+                Voice
+              </div>
+              <div class="appshell__nav-item" aria-selected="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><circle cx="17" cy="10" r="3"/><path d="M2 21a7 7 0 0 1 14 0"/></svg>
+                Personas
+              </div>
+              <div class="appshell__nav-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg>
+                Products
+              </div>
+              <div class="appshell__nav-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/></svg>
+                Tones
+              </div>
+              <div class="appshell__nav-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
+                Vocabulary
+              </div>
+              <div class="appshell__nav-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                Matrix
+              </div>
+
+              <div class="appshell__switcher">
+                <div class="appshell__switcher-mark">R</div>
+                Rivertown &middot; Live
+                <span class="appshell__switcher-caret">›</span>
+              </div>
+            </aside>
+
+            <div class="editor">
+              <div class="editor__list">
+                <div class="editor__item">Local partners</div>
+                <div class="editor__item" aria-selected="true"><span class="editor__item-dot"></span>Loyal members</div>
+                <div class="editor__item">Volunteers</div>
+                <div class="editor__item">New customers</div>
+              </div>
+              <div class="editor__detail">
+                <div class="editor__detail-head">
+                  <div class="editor__detail-title">Loyal members</div>
+                  <span class="tag tag--ghost" style="font-family: var(--font-mono); text-transform: none; letter-spacing: 0;">rev 14 &middot; 2h ago</span>
+                </div>
+
+                <div class="editor__field">
+                  <label>Description</label>
+                  <div class="input-like">People who&rsquo;ve supported you before and keep coming back. Busy, value-driven, and quick to notice when a message doesn&rsquo;t sound like you.</div>
+                </div>
+
+                <div class="editor__field">
+                  <label>Drivers</label>
+                  <div class="editor__chips">
+                    <span class="editor__chip">trust</span>
+                    <span class="editor__chip">value</span>
+                    <span class="editor__chip">belonging</span>
+                    <span class="editor__chip">easy repeat</span>
+                  </div>
+                </div>
+
+                <div class="editor__field">
+                  <label>Pain points</label>
+                  <div class="editor__chips">
+                    <span class="editor__chip">generic mass emails</span>
+                    <span class="editor__chip">feeling like a number</span>
+                    <span class="editor__chip">off-brand replies</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================= COMPOSE ============================= -->
+  <section class="feat" id="compose">
+    <div class="container feat__inner">
+
+      <div class="feat__copy">
+        <span class="eyebrow feat__eyebrow">03 &middot; Compose</span>
+        <h2 class="feat__title">Every combination. Auto-generated.</h2>
+        <p class="lede">
+          Combinations are the heart of Brandplio. Every persona &times; product
+          &times; tone is prepared for each channel, ready for your tools the
+          moment they ask. Nothing is written twice.
+        </p>
+
+        <ul class="feat__list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Ready instantly.</b> Prompts are ready the moment you need them, with no wait.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Status at a glance.</b> Ready, needs review, or blocked by a tension, all visible from the grid.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>One-click prompt copy.</b> Open a cell, pick a channel, send it to a creator or an agent.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="feat__visual">
+        <div class="frame">
+          <div class="frame__chrome">
+            <div class="frame__dots"><span></span><span></span><span></span></div>
+            <div class="frame__url">
+              <span class="frame__url-lock" aria-hidden="true"></span>
+              <span class="frame__url-text">app.brandplio.com/matrix</span>
+            </div>
+          </div>
+          <div class="matrix-wrap">
+            <table class="matrix-table">
+              <thead>
+                <tr>
+                  <th>Persona &times; Product</th>
+                  <th>Warm</th>
+                  <th>Urgent</th>
+                  <th>Celebratory</th>
+                  <th>Grateful</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Loyal members &middot; Membership</td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                  <td><span class="mx-cell mx-cell--warn">review</span></td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                </tr>
+                <tr>
+                  <td>Loyal members &middot; Storefront</td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                  <td><span class="mx-cell mx-cell--empty">·</span></td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                </tr>
+                <tr>
+                  <td>Volunteers &middot; Membership</td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                  <td><span class="mx-cell mx-cell--empty">·</span></td>
+                  <td><span class="mx-cell mx-cell--empty">·</span></td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                </tr>
+                <tr>
+                  <td>Volunteers &middot; Storefront</td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                </tr>
+                <tr>
+                  <td>New customers &middot; Membership</td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                  <td><span class="mx-cell mx-cell--warn">review</span></td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                  <td><span class="mx-cell mx-cell--empty">·</span></td>
+                </tr>
+                <tr>
+                  <td>Local partners &middot; Membership</td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                  <td><span class="mx-cell mx-cell--ok">ready</span></td>
+                  <td><span class="mx-cell mx-cell--empty">·</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================= DETECT ============================= -->
+  <section class="feat feat--flip" id="detect">
+    <div class="container feat__inner">
+
+      <div class="feat__copy">
+        <span class="eyebrow feat__eyebrow">04 &middot; Detect</span>
+        <h2 class="feat__title">Off-brand combinations, caught at compose time.</h2>
+        <p class="lede">
+          When you pick a persona, a product, and a tone that shouldn&rsquo;t
+          mix (say, an urgent tone for a risk-averse audience, or a celebratory
+          frame for a sensitive announcement), Brandplio flags the tension
+          before a single word of copy is generated.
+        </p>
+
+        <ul class="feat__list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Rules + learned signals.</b> Hand-authored guardrails plus patterns inferred from your own flagged content.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Severity-aware.</b> <code>warn</code>, <code>block</code>, or <code>suppress</code>: your call per combination.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Also surfaced at the API.</b> Tensions come back in the response, so downstream agents can react.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="feat__visual">
+        <div class="frame">
+          <div class="frame__chrome">
+            <div class="frame__dots"><span></span><span></span><span></span></div>
+            <div class="frame__url">
+              <span class="frame__url-lock" aria-hidden="true"></span>
+              <span class="frame__url-text">app.brandplio.com/matrix/new</span>
+            </div>
+          </div>
+          <div class="tension">
+            <div class="tension__form">
+              <div class="tension__select">
+                <span>Persona</span>
+                <span class="tension__select-value">Loyal members</span>
+                <span class="tension__select-caret">›</span>
+              </div>
+              <div class="tension__select">
+                <span>Product</span>
+                <span class="tension__select-value">Membership</span>
+                <span class="tension__select-caret">›</span>
+              </div>
+              <div class="tension__select">
+                <span>Tone</span>
+                <span class="tension__select-value">Urgent</span>
+                <span class="tension__select-caret">›</span>
+              </div>
+            </div>
+
+            <div class="tension__banner" role="alert">
+              <div class="tension__banner-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>
+              </div>
+              <div class="tension__banner-body">
+                <strong>Tone conflicts with persona driver</strong>
+                <span>Loyal members respond poorly to urgency framing. Their primary driver is <code>trust and belonging</code>. Suggested alternatives: <code>warm</code>, <code>grateful</code>.</span>
+              </div>
+              <span class="tension__banner-sev">Warn</span>
+            </div>
+
+            <div class="tension__banner" role="alert" style="background: color-mix(in srgb, var(--color-accent) 10%, transparent); border-color: color-mix(in srgb, var(--color-accent) 38%, transparent);">
+              <div class="tension__banner-icon" style="background: var(--color-accent-fade); color: var(--color-accent);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              </div>
+              <div class="tension__banner-body">
+                <strong>Channel mismatch</strong>
+                <span>&ldquo;Urgent&rdquo; on Instagram historically underperforms for this audience. Consider switching to email for this combination.</span>
+              </div>
+              <span class="tension__banner-sev" style="background: var(--color-accent); color: var(--color-ink-on-accent);">Info</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================= SERVE (Prompt viewer) ============================= -->
+  <section class="feat" id="serve">
+    <div class="container feat__inner">
+
+      <div class="feat__copy">
+        <span class="eyebrow feat__eyebrow">05 &middot; Serve</span>
+        <h2 class="feat__title">The right context, delivered to your tools automatically.</h2>
+        <p class="lede">
+          You never write or paste a prompt. When a tool or an AI on your stack
+          asks for your brand, Brandplio hands back the right context for the
+          moment, shaped for Email, Web, LinkedIn, X, or Instagram, with each
+          channel&rsquo;s rules already applied: subject length, hashtag behavior,
+          disclaimer requirements. Want to see exactly what your tools receive?
+          It&rsquo;s all here, in plain sight.
+        </p>
+
+        <ul class="feat__list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Five channels out of the box.</b> Email, web copy, LinkedIn, X, Instagram.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Text or JSON.</b> Plain-text for people, structured JSON for agents.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Always fast.</b> Frequently used context is cached for near-instant delivery.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="feat__visual">
+        <div class="frame">
+          <div class="frame__chrome">
+            <div class="frame__dots"><span></span><span></span><span></span></div>
+            <div class="frame__url">
+              <span class="frame__url-lock" aria-hidden="true"></span>
+              <span class="frame__url-text">app.brandplio.com/matrix/cmb_9jV1/prompt</span>
+            </div>
+          </div>
+          <div class="promptview">
+            <div class="promptview__channels" role="tablist">
+              <div class="promptview__channel" role="tab">Universal</div>
+              <div class="promptview__channel" role="tab" aria-selected="true">Email</div>
+              <div class="promptview__channel" role="tab">Web copy</div>
+              <div class="promptview__channel" role="tab">LinkedIn</div>
+              <div class="promptview__channel" role="tab">X</div>
+              <div class="promptview__channel" role="tab">Instagram</div>
+            </div>
+            <div class="promptview__body">
+              <div class="promptview__meta">
+                <span class="tag">Loyal members</span>
+                <span class="tag">Membership</span>
+                <span class="tag">Warm</span>
+                <span class="tag tag--ghost">rev_2024_11_14.07</span>
+              </div>
+
+<pre class="promptview__prompt">You are writing as <b>Rivertown</b>, a community-run brand.
+
+<b>Audience.</b> Loyal members who&rsquo;ve supported you before.
+  Drivers: trust, value, belonging.
+  Pain: generic mass emails, feeling like a number.
+
+<b>Product.</b> Membership, your recurring support program.
+  Positioning: the easiest way to keep supporting what you love.
+
+<b>Tone.</b> Warm. Lead with gratitude. Keep it personal.
+
+<b>Channel.</b> Email.
+  Subject line: under 60 characters, one specific benefit, no emoji.
+  Body: 120 to 180 words, one clear ask, no multi-CTA stacks.
+
+<b>Vocabulary.</b>
+  Prefer: "members", "community", "support".
+  Avoid: "users", "guys", "revolutionary", "game-changing".
+</pre>
+
+              <div class="promptview__actions">
+                <button class="btn btn--ghost" style="height: 36px; padding: 0 var(--space-4); font-size: var(--text-xs);">View as JSON</button>
+                <button class="btn btn--primary" style="height: 36px; padding: 0 var(--space-4); font-size: var(--text-xs);">Copy prompt</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================= GOVERN (Review queue) ============================= -->
+  <section class="feat feat--flip" id="govern">
+    <div class="container feat__inner">
+
+      <div class="feat__copy">
+        <span class="eyebrow feat__eyebrow">06 &middot; Govern</span>
+        <h2 class="feat__title">One queue. Every flag. Every brand.</h2>
+        <p class="lede">
+          Content flagged by the analyzer, tensions raised at compose time,
+          restricted claims caught by the vocabulary engine: all of it lands
+          in a single review queue. Approve, edit, or reject. Every action
+          is tracked.
+        </p>
+
+        <ul class="feat__list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Role-based routing.</b> Send each flag to the right person: brand, content, or reviewer.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Change history.</b> Every approve, reject, and edit is attributed and timestamped.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Closes the loop.</b> Reject with a reason, and the rule that caught it gets a learning signal.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="feat__visual">
+        <div class="frame">
+          <div class="frame__chrome">
+            <div class="frame__dots"><span></span><span></span><span></span></div>
+            <div class="frame__url">
+              <span class="frame__url-lock" aria-hidden="true"></span>
+              <span class="frame__url-text">app.brandplio.com/review</span>
+            </div>
+          </div>
+          <div class="queue">
+
+            <div class="queue__row">
+              <div class="queue__icon queue__icon--risk">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6l8-3z"/></svg>
+              </div>
+              <div class="queue__body">
+                <div class="queue__title">Restricted claim: &ldquo;guaranteed results&rdquo;</div>
+                <div class="queue__meta">
+                  <span>Source · /pricing</span>
+                  <span>Flagged · 2h ago</span>
+                  <span>Rule · brand.restricted-claims</span>
+                </div>
+              </div>
+              <div class="queue__actions">
+                <button class="queue__btn">Edit</button>
+                <button class="queue__btn queue__btn--primary">Resolve</button>
+              </div>
+            </div>
+
+            <div class="queue__row">
+              <div class="queue__icon queue__icon--warn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>
+              </div>
+              <div class="queue__body">
+                <div class="queue__title">Tone conflict: Loyal members × Urgent</div>
+                <div class="queue__meta">
+                  <span>Combination · cmb_7kT9</span>
+                  <span>Raised · 4h ago</span>
+                  <span>Severity · warn</span>
+                </div>
+              </div>
+              <div class="queue__actions">
+                <button class="queue__btn">Override</button>
+                <button class="queue__btn queue__btn--primary">Adjust tone</button>
+              </div>
+            </div>
+
+            <div class="queue__row">
+              <div class="queue__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
+              </div>
+              <div class="queue__body">
+                <div class="queue__title">Vocabulary drift: &ldquo;users&rdquo; used 14 times</div>
+                <div class="queue__meta">
+                  <span>Source · CMS imports (last 30d)</span>
+                  <span>Flagged · yesterday</span>
+                  <span>Rule · vocabulary.prefer-members</span>
+                </div>
+              </div>
+              <div class="queue__actions">
+                <button class="queue__btn">Ignore</button>
+                <button class="queue__btn queue__btn--primary">Auto-fix</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================= DELIVER (3 modes recap) ============================= -->
+  <section class="delivery" id="deliver">
+    <div class="container">
+      <div class="section-head" style="max-width: 720px;">
+        <span class="eyebrow">07 &middot; Deliver</span>
+        <h2 class="display-md">Three ways into your team&rsquo;s content workflow.</h2>
+        <p class="lede">Pick the integration path that matches your audience. Use all three: most customers do.</p>
+      </div>
+
+      <div class="delivery__grid">
+
+        <article class="mode">
+          <div class="mode__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="18" cy="18" r="2.5"/></svg>
+          </div>
+          <div class="mode__tag">REST &middot; for developers</div>
+          <h3 class="mode__title">Public API</h3>
+          <p class="mode__desc">Direct access to every combination, prompt, and catalog entry. TypeScript and Python SDKs, <code>bvp_</code>-prefixed keys, ETag-cached responses.</p>
+          <a href="../developers/#reference" class="mode__link">Browse the reference <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="mode">
+          <div class="mode__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M8 9v6M12 9v6M16 9v6"/></svg>
+          </div>
+          <div class="mode__tag">MCP &middot; for agents</div>
+          <h3 class="mode__title">MCP server</h3>
+          <p class="mode__desc">Drop Brandplio into Claude Desktop, Cursor, Zed, or any MCP-aware host. Agents list combinations and pull context as native tools.</p>
+          <a href="../developers/#mcp" class="mode__link">Set up the MCP <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="mode">
+          <div class="mode__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="mode__tag">Skill &middot; for creators</div>
+          <h3 class="mode__title">Drop-in skill</h3>
+          <p class="mode__desc">A pre-built system prompt for Claude Projects, ChatGPT GPTs, Claude Code, and Slack. Creators chat naturally; the skill resolves intent and fetches context.</p>
+          <a href="../developers/#skills" class="mode__link">Grab the template <span aria-hidden="true">→</span></a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= CTA ============================= -->
+  <section class="section" id="demo">
+    <div class="container">
+      <div class="cta-band">
+        <span class="eyebrow" style="justify-content:center; color: var(--color-accent);">See it on your own brand</span>
+        <h2 class="display-lg" style="margin-top: var(--space-4);">30-minute demo. Your site, analyzed on the call.</h2>
+        <p class="lede">We&rsquo;ll run the analyzer against your URL while you watch, and walk you through your combinations with real output.</p>
+        <div class="cta-band__actions">
+          <a href="#" class="btn btn--primary btn--lg">Book a demo</a>
+          <a href="../developers/" class="btn btn--ghost btn--lg">See the developer story</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================= FOOTER ============================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__brand-name">Brandplio</div>
+        <p class="footer__tag">Brand voice for the agent era. Extract it once, serve it everywhere.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#extract">Extract</a></li>
+          <li><a href="#model">Model</a></li>
+          <li><a href="#compose">Compose</a></li>
+          <li><a href="../#pricing">Pricing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Developers</h4>
+        <ul>
+          <li><a href="../developers/#reference">API</a></li>
+          <li><a href="../developers/#mcp">MCP server</a></li>
+          <li><a href="../developers/#skills">Skills</a></li>
+          <li><a href="#">Status</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Customers</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Security</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div>&copy; <span id="year">2026</span> Brandplio, Inc.</div>
+      <div>Crafted with care in vanilla HTML, CSS, and JavaScript.</div>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../scripts/main.js"></script>
+
+</body>
+</html>
